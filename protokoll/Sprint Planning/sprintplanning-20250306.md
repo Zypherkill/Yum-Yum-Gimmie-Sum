@@ -1,4 +1,4 @@
-# Mötesprotokoll (dagens datum)
+# Mötesprotokoll 2025-03-06
 
 ## Närvarande
 * Hannes
