@@ -15,12 +15,12 @@ function displayETA(eta) {
     img.alt = "image of delivery container";
 
     h2.textContent = "Din mat är på väg!";
-    p.textContent = `Din mat kommer att vara klar om ${formattedETA} minuter.`;
+    p.textContent = `ETA ${formattedETA} min.`;
 
     article.appendChild(img);
     article.appendChild(h2);
     article.appendChild(p);
-    document.querySelector("#content-wrapper").appendChild(article);
+    document.querySelector(".content-wrapper").appendChild(article);
 }
 
 function getRandomTime(min, max) {
