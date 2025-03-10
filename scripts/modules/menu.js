@@ -2,7 +2,7 @@ import { getProducts } from "../modules/api.js";
 
 export async function showMenu() {
 	const productData = await getProducts();
-	const wrapperRef = document.querySelector('#menu-wrapper');
+	const wrapperRef = document.querySelector('.menu-wrapper');
 
 	// Skapar en sektion som håller texten "Meny" samt en ikon för att filtrera
 	const headerRef = document.createElement('section');
