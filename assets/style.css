@@ -92,3 +92,42 @@ body {
     flex-direction: column;
     padding-left: 1rem;
 }
+/*TIMs Styling börjar här -  Bara o ta bort sen!*/
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #918d8d;
+}
+
+#content-wrapper {
+    width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #6b6262;
+    border: 2px solid #000000;
+    border-radius: 9px;
+    padding-bottom: 5rem;
+}
+
+h1 {
+    text-align: center;
+    color: #cfcfcf;
+    margin-bottom: 1rem
+}
+
+.test-menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    border: 2px solid #000000;
+    border-radius: 9px;
+    background-color: rgb(171, 173, 173);
+    margin-bottom: 5px;
+}
+
+/* TIMs Styling Slutar här  */
