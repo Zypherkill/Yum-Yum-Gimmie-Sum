@@ -6,6 +6,8 @@ export async function showMenu() {
 
 	// Skapar en sektion som håller texten "Meny" samt en ikon för att filtrera
 	const headerRef = document.createElement('section');
+	headerRef.classList.add('menu-header')
+
 	const headerText = document.createElement('h1');
 	headerText.textContent = "Meny";
 
@@ -19,6 +21,7 @@ export async function showMenu() {
 
 	// Populerar menyn med rätterna
 	const menuRef = document.createElement('section');
+	menuRef.classList.add('menu-items');
 
 	productData.forEach((item) => {
 		const itemName = document.createElement('h2');
