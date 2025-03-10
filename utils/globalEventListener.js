@@ -1,3 +1,4 @@
+
 const GlobalEventListener = (() => {
     const events = new Map();
 
