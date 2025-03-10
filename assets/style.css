@@ -20,6 +20,8 @@ body {
     height: 100vh;
     display: flex;
     justify-content: center;
+    background-color: var(--green-bg);
+    background-image: url(./images/leaves.png);
 }
 
 #content-wrapper {
@@ -80,4 +82,13 @@ body {
         color: var(--primary-font-color);
         font-size: 1.5rem;
     }
+}
+
+#menu-wrapper {
+    background-color: var(--primary-bg);
+    width: 90%;
+    color: var(--primary-font-color);
+    display: flex;
+    flex-direction: column;
+    padding-left: 1rem;
 }
