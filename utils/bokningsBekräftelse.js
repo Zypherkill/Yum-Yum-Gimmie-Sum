@@ -15,7 +15,7 @@ export async function sendBookingRequest(orderDetails, endpoint) {
             email: user.email,
 
             itemId: product.id,
-            itemName: product.name,
+            itemName: product.name, 
             itemPrice: product.price
 
         };
