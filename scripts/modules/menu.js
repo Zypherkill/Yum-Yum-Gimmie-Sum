@@ -26,19 +26,21 @@ export async function showMenu() {
 	productData.forEach((item) => {
 		const itemName = document.createElement('h2');
 		itemName.textContent = item.name;
+		itemName.classList.add('menu-item')
 
 		const itemIngredients = document.createElement('p');
 		itemIngredients.textContent = item.itemIngredients;
+		itemIngredients.classList.add('menu-ingredients')
 
 		const itemPrice = document.createElement('p');
 		itemPrice.textContent = item.price;
+		itemPrice.classList.add('menu-price')
 
 		const plusButton = document.createElement('i');
 		plusButton.classList.add('fa-solid', 'fa-circle-plus');
 
 		const minusButton = document.createElement('i');
 		minusButton.classList.add('fa-solid', 'fa-circle-minus')
-
 
 		menuRef.appendChild(itemName);
 		menuRef.appendChild(itemIngredients);
