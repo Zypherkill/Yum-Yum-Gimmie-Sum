@@ -24,16 +24,22 @@ export async function showMenu() {
 	menuRef.classList.add('menu-items');
 
 	productData.forEach((item) => {
+		const menuItem = document.createElement('article');
+		menuItem.classList.add('menu-item');
 		const itemName = document.createElement('h2');
 		itemName.textContent = item.name;
-		itemName.classList.add('menu-item')
+		itemName.classList.add('menu-title')
 
 		const itemIngredients = document.createElement('p');
-		itemIngredients.textContent = item.itemIngredients;
-		itemIngredients.classList.add('menu-ingredients')
+        if (Array.isArray(item.ingredients) && item.ingredients.length > 0) {
+            itemIngredients.textContent = item.ingredients.join(', ');
+        } else {
+            itemIngredients.textContent = "";
+        }
+        itemIngredients.classList.add('menu-ingredients');
 
 		const itemPrice = document.createElement('p');
-		itemPrice.textContent = item.price;
+		itemPrice.textContent = `${item.price} sek`;
 		itemPrice.classList.add('menu-price')
 
 		const plusButton = document.createElement('i');
@@ -42,12 +48,12 @@ export async function showMenu() {
 		const minusButton = document.createElement('i');
 		minusButton.classList.add('fa-solid', 'fa-circle-minus')
 
-		menuRef.appendChild(itemName);
-		menuRef.appendChild(itemIngredients);
-		menuRef.appendChild(itemPrice);
-		menuRef.appendChild(minusButton);
-		menuRef.appendChild(plusButton);
-
+		menuRef.appendChild(menuItem);
+		menuItem.appendChild(itemName);
+		menuItem.appendChild(itemIngredients);
+		menuItem.appendChild(itemPrice);
+		menuItem.appendChild(minusButton);
+		menuItem.appendChild(plusButton);
 		wrapperRef.appendChild(menuRef);
 	})
 }
