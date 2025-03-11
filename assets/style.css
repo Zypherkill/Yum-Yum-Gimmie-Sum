@@ -211,6 +211,10 @@ body {
     }
 }
 
+.menu-item:hover {
+    background-color: rgba(241, 240, 236, 0.2);
+}
+
 
 .order-page {
     grid-template-rows: auto;
