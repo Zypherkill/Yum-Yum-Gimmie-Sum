@@ -5,3 +5,6 @@ if (window.location.pathname === "/pages/bestallning.html") {
     placeOrder();
 }
 showMenu();
+
+    
+

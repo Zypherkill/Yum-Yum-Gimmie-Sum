@@ -18,22 +18,40 @@ export function addToCart(item) {
     if (existingItem) {
         existingItem.quantity += 1;
     } else {
-        cart.push({ ...item, quantity: 1 });
+        cart.push({ ...item, quantity : 1 });
     }
 
     saveCart(cart);
     updateCart();
 }
 
-// ta bort från varukorg
 export function removeFromCart(itemId) {
     let cart = getCart();
-    cart = cart.filter(item => item.id !== itemId);
+    let existingItem = cart.find(cartItem => cartItem.id === itemId);
+
+    if (existingItem) {
+        if (existingItem.quantity > 1) {
+            existingItem.quantity -= 1;
+        } else {
+            cart = cart.filter(item => item.id !== itemId);
+        }
+    }
 
     saveCart(cart);
+    
     updateCart();
 }
 
+function renderMenu(menuItems) {
+    const menuContainer = document.getElementById("menu");
+    menuContainer.innerHTML = menuItems.map(item => `
+        <div class="menu-item">
+            <h3>${item.name}</h3>
+            <p>Pris: ${item.price} kr</p>
+            <button class="add-to-cart" data-id="${item.id}">Lägg till</button>
+        </div>
+    `).join("");
+}
 
 // Uppdatera varukorgen
 function updateCart() {
@@ -52,6 +70,13 @@ function updateCart() {
 
 }
 
-
-
-
+document.addEventListener("DOMContentLoaded", async () => {
+    
+    if (document.getElementById("cart-container")) {
+        const menuItems = await getProducts();
+        renderMenu(menuItems);
+    }
+    if (document.getElementById("cart")) {
+        updateCart();
+    }
+});
