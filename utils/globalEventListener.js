@@ -1,5 +1,5 @@
 
-const GlobalEventListener = (() => {
+export const globalEventListener = (() => {
     const events = new Map();
 
      //add globalEventListener
@@ -39,14 +39,15 @@ const GlobalEventListener = (() => {
         }
     };
      //execute event
-    const handleEvent = (event) => {
+     const handleEvent = (event) => {
         const { target } = event;
         const listenerType = event.type;
-        
+    
         if (events.has(listenerType)) {
             events.get(listenerType).forEach(({ selector, onEvent }) => {
-                if (target.closest(selector)) {
-                    onEvent(event);
+                const matchingElement = target.closest(selector);
+                if (matchingElement) {
+                    onEvent(event, matchingElement); // Pass matching element
                 }
             });
         }
