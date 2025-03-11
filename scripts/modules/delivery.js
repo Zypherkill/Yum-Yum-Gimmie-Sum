@@ -18,13 +18,14 @@ function displayETA(eta) {
 
     p.textContent = `ETA ${formattedETA} min.`;
 
-
     article.appendChild(img);
     article.appendChild(h2);
     article.appendChild(p);
-  
+
     document.querySelector(".content-wrapper").appendChild(article);
 }
+
+// updatera display ETA till = (eta, dish)  `Dina ${dish} är klar om ${formattedETA} minuter.`;
 
 function getRandomTime(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -34,6 +35,7 @@ export function placeOrder() {
     let eta = getRandomTime(15, 30);
     displayETA(eta);
 }
+// updatera placeOrder med = (dish) och displayETA(eta, dish)
 
 function formatTime(time) {
     let minutes = time % 60;
