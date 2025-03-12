@@ -146,7 +146,7 @@ body {
 
 }
 
-.menu-wrapper {
+.menu-wrapper, .cart-container {
     width: 440px;
     background-color: var(--primary-bg);
     color: var(--primary-font-color);
@@ -164,6 +164,9 @@ body {
 
     
 }
+
+
+
 
 .menu-items {
     display: flex;

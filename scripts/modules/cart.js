@@ -43,9 +43,10 @@ export function removeFromCart(itemId) {
 }
 
 function renderMenu(menuItems) {
-    const menuContainer = document.getElementById("menu");
+    const menuContainer = document.querySelector("menu-wrapper");
+    menuContainer.textContent = '';
     menuContainer.innerHTML = menuItems.map(item => `
-        <div class="menu-item">
+        <div class="menu-items">
             <h3>${item.name}</h3>
             <p>Pris: ${item.price} kr</p>
             <button class="add-to-cart" data-id="${item.id}">Lägg till</button>

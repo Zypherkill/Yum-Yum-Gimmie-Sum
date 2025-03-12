@@ -14,6 +14,7 @@ export async function showMenu() {
     console.log("productData:", productData);
 
     const wrapperRef = document.querySelector('.menu-wrapper');
+    
 
     // Clear the wrapper before appending new elements
     wrapperRef.innerHTML = '';
