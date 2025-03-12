@@ -349,3 +349,31 @@ body {
     width: 100%;
     grid-row: 2;
 }
+
+.menu-item.total-price-container {
+    grid-column: 1 / -1;
+    font-size: 30px;
+}
+
+.total-price {
+    display: flex;
+    grid-column: 1 / -1;
+    justify-content: space-between;
+    width: 100%;
+    padding: 10px 10px 10px 0px;
+    background-color: rgba(53, 49, 49, 0.24);
+
+    span:last-child {
+        font-weight: bold;
+    }
+}
+
+.orderButton {
+    display: flex;
+    height: 25%;
+}
+
+.orderButtonArticle {
+    display: flex;
+    justify-content: center;
+}

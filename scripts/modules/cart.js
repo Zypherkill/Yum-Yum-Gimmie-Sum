@@ -52,6 +52,7 @@ function renderMenu() {
             <h2 class="menu-title">${item.name} x ${item.quantity}</h2>
             <p class="menu-ingredients">${Array.isArray(item.ingredients) && item.ingredients.length > 0 ? item.ingredients.join(', ') : "Inga ingredienser"}</p>
             <p class="menu-price">${item.price * item.quantity} sek</p>
+            <i class="fa-solid fa-circle-plus add-to-cart" data-id="${item.id}"></i>
             <i class="fa-solid fa-circle-minus remove-from-cart" data-id="${item.id}"></i>
         </article>
     `).join("");
@@ -64,24 +65,54 @@ function updateCart() {
 
     const cart = getCart();
 
+    // Skapa HTML för varje produkt i varukorgen
     cartContainer.innerHTML = cart.map(item => `
         <article class="menu-item">
             <h2 class="menu-title">${item.name} x ${item.quantity}</h2>
             <p class="menu-ingredients">${Array.isArray(item.ingredients) && item.ingredients.length > 0 ? item.ingredients.join(', ') : "Inga ingredienser"}</p>
             <p class="menu-price">${item.price * item.quantity} sek</p>
+            <i class="fa-solid fa-circle-plus add-to-cart" data-id="${item.id}"></i>
             <i class="fa-solid fa-circle-minus remove-from-cart" data-id="${item.id}"></i>
         </article>
     `).join("");
+
+    // Beräkna totalpris
+    const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+
+    // Lägg till totalpris i slutet av varukorgen
+    cartContainer.innerHTML += `<article class="menu-item total-price-container">
+    <p class="total-price">
+        <span>Total:</span>
+        <span>${totalPrice} SEK</span>
+    </p>
+    </article>
+
+    <article class="orderButtonArticle">
+    <a href="/pages/bestallning.html" class="button button--top orderButton"> <button>TAKE MY MONEY</button></a>
+    </article>`;
+
 }
 
-// Lyssna på klick för att ta bort från varukorgen
+
+// Lyssna på klick för att lägga till och ta bort från varukorgen
 document.addEventListener("click", (event) => {
+    const itemId = parseInt(event.target.getAttribute("data-id"));
+
     if (event.target.classList.contains("remove-from-cart")) {
-        const itemId = parseInt(event.target.getAttribute("data-id"));
         removeFromCart(itemId);
         updateCart(); // Uppdatera både varukorgen och menyn
     }
+
+    if (event.target.classList.contains("add-to-cart")) {
+        const cart = getCart();
+        const item = cart.find(cartItem => cartItem.id === itemId);
+
+        if (item) {
+            addToCart(item); // Lägg till en till av befintlig produkt
+        }
+    }
 });
+
 
 // När sidan laddas, rendera menyn och varukorgen
 document.addEventListener("DOMContentLoaded", () => {
