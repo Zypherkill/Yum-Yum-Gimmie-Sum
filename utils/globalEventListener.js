@@ -1,10 +1,8 @@
-
-const GlobalEventListener = (() => {
+export const globalEventListener = (() => {
     const events = new Map();
 
-     //add globalEventListener
+    //add globalEventListener
     const add = (listenerType, selector, onEvent) => {
-
         //if events has a listener tex; 'click' set it as a array
         if (!events.has(listenerType)) {
             events.set(listenerType, []);
@@ -38,15 +36,19 @@ const GlobalEventListener = (() => {
             }
         }
     };
-     //execute event
+
+    //execute event
     const handleEvent = (event) => {
         const { target } = event;
         const listenerType = event.type;
-        
+
         if (events.has(listenerType)) {
             events.get(listenerType).forEach(({ selector, onEvent }) => {
-                if (target.closest(selector)) {
-                    onEvent(event);
+                if (target instanceof Element) {
+                    const matchingElement = target.closest(selector);
+                    if (matchingElement) {
+                        onEvent(event, matchingElement); // Pass matching element
+                    }
                 }
             });
         }
@@ -54,5 +56,3 @@ const GlobalEventListener = (() => {
 
     return { add, remove };
 })();
-
-

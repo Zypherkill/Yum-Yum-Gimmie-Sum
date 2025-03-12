@@ -5,7 +5,7 @@
     --green-bg: #8ED8BF;
     --button-color: #353131;
     --primary-font-color: white;
-    --secondary-font-color: black; 
+    --secondary-font-color: black;
 }
 
 * {
@@ -34,7 +34,7 @@ body {
     justify-items: center;
     padding-top: 0.5rem;
     .logo {
-        grid-column: 2; 
+        grid-column: 2;
     }
 
     .hamburger-menu {
@@ -130,14 +130,14 @@ body {
 
 .about-us {
     padding: 0 1rem;
-    
+
     .header {
         img {
             height: 5rem;
             width: 5rem;
         }
     }
-    
+
     img {
         width: 100%;
         height: 100%;
@@ -146,7 +146,7 @@ body {
 
 }
 
-.menu-wrapper {
+.menu-wrapper, #cart {
     width: 440px;
     background-color: var(--primary-bg);
     color: var(--primary-font-color);
@@ -162,8 +162,11 @@ body {
         padding: 1rem;
     }
 
-    
+
 }
+
+
+
 
 .menu-items {
     display: flex;
@@ -255,4 +258,3 @@ body {
         }
     }
 }
-
