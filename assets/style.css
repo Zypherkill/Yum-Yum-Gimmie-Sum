@@ -40,18 +40,78 @@ body {
     .hamburger-menu {
         grid-column: 1;
         justify-self: start;
+        padding-left: 0.5rem;
     }
 
     .fa-cart-shopping {
         grid-column: 3;
         justify-self: end;
         font-size: 2rem;
+        padding-right: 0.5rem;
     }
 }
 
+.navigation {
+    position: fixed;
+    top: 0;
+    top: -800px;
+    width: 475px;
+    height: auto;
+    background-color: var(--primary-bg);
+    transition: top 0.3s ease;
+    grid-column: 1/-1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .list-item {
+        list-style-type: none;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 100%;
+
+    }
+
+    a {
+        text-decoration: none;
+        color: var(--primary-font-color);
+        font-size: 1.5rem;
+        width: 100%;
+        text-align: center;
+        padding: 2rem 0;
+    }
+
+    .nav-top {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        align-items: center;
+        font-size: 3rem;
+        padding: 2rem 1rem;
+        background-color: var(--green-bg);
+        background-image: url(./images/leaves.png);
+
+        .logo {
+            grid-column: 2;
+            justify-self: center;
+        }
+
+        .fa-xmark {
+            grid-column: 1;
+            grid-row: 1;
+        }
+    }
+}
+
+.navigation.open {
+    top: 0;
+}
+
 .menu-page {
-    padding-left: 2rem;
-    padding-right: 2rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
     padding-bottom: 1rem;
     width: 475px;
 }
@@ -67,7 +127,7 @@ body {
 }
 
 .content-wrapper {
-    width: 500px;
+    width: 475px;
     background-color: var(--primary-bg);
     display: grid;
     grid-template-columns: 1fr;
@@ -147,11 +207,12 @@ body {
 }
 
 .menu-wrapper {
-    width: 440px;
+    width: 475px;
     background-color: var(--primary-bg);
     color: var(--primary-font-color);
     display: flex;
     flex-direction: column;
+    overflow: hidden;
     gap: 1rem;
     padding-bottom: 1rem;
 
@@ -168,6 +229,7 @@ body {
 .menu-items {
     display: flex;
     flex-direction: column;
+    overflow-y: scroll;
 }
 
 .menu-item {
@@ -211,7 +273,7 @@ body {
     }
 }
 
-.menu-item:hover {
+.menu-item:hover, a:hover {
     background-color: rgba(241, 240, 236, 0.2);
 }
 
