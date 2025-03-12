@@ -1,16 +1,14 @@
-
-
-// hämta varukorg
+// Hämta varukorg
 function getCart() {
     return JSON.parse(localStorage.getItem("cart")) || [];
 }
 
-// spara varukorg
+// Spara varukorg
 function saveCart(cart) {
     localStorage.setItem("cart", JSON.stringify(cart));
 }
 
-// lägg till i varukorg
+// Lägg till i varukorg
 export function addToCart(item) {
     let cart = getCart();
     let existingItem = cart.find(cartItem => cartItem.id === item.id);
@@ -18,13 +16,14 @@ export function addToCart(item) {
     if (existingItem) {
         existingItem.quantity += 1;
     } else {
-        cart.push({ ...item, quantity : 1 });
+        cart.push({ ...item, quantity: 1 });
     }
 
     saveCart(cart);
     updateCart();
 }
 
+// Ta bort från varukorg
 export function removeFromCart(itemId) {
     let cart = getCart();
     let existingItem = cart.find(cartItem => cartItem.id === itemId);
@@ -38,19 +37,23 @@ export function removeFromCart(itemId) {
     }
 
     saveCart(cart);
-    
     updateCart();
 }
 
-function renderMenu(menuItems) {
-    const menuContainer = document.querySelector("menu-wrapper");
-    menuContainer.textContent = '';
-    menuContainer.innerHTML = menuItems.map(item => `
-        <div class="menu-items">
-            <h3>${item.name}</h3>
-            <p>Pris: ${item.price} kr</p>
-            <button class="add-to-cart" data-id="${item.id}">Lägg till</button>
-        </div>
+// Rendera endast varukorgens produkter i menyn
+function renderMenu() {
+    const menuContainer = document.querySelector(".menu-wrapper");
+    if (!menuContainer) return;
+
+    const cartItems = getCart();
+
+    menuContainer.innerHTML = cartItems.map(item => `
+        <article class="menu-item">
+            <h2 class="menu-title">${item.name} x ${item.quantity}</h2>
+            <p class="menu-ingredients">${Array.isArray(item.ingredients) && item.ingredients.length > 0 ? item.ingredients.join(', ') : "Inga ingredienser"}</p>
+            <p class="menu-price">${item.price * item.quantity} sek</p>
+            <i class="fa-solid fa-circle-minus remove-from-cart" data-id="${item.id}"></i>
+        </article>
     `).join("");
 }
 
@@ -60,24 +63,28 @@ function updateCart() {
     if (!cartContainer) return;
 
     const cart = getCart();
+
     cartContainer.innerHTML = cart.map(item => `
-        <div class="cart-item">
-            <h4>${item.name} x ${item.quantity}</h4>
-            <p>${item.price * item.quantity} kr</p>
-            <button class="remove-from-cart" data-id="${item.id}">Ta bort</button>
-        </div>
+        <article class="menu-item">
+            <h2 class="menu-title">${item.name} x ${item.quantity}</h2>
+            <p class="menu-ingredients">${Array.isArray(item.ingredients) && item.ingredients.length > 0 ? item.ingredients.join(', ') : "Inga ingredienser"}</p>
+            <p class="menu-price">${item.price * item.quantity} sek</p>
+            <i class="fa-solid fa-circle-minus remove-from-cart" data-id="${item.id}"></i>
+        </article>
     `).join("");
-
-
 }
 
-document.addEventListener("DOMContentLoaded", async () => {
-    
-    if (document.getElementById("cart-container")) {
-        const menuItems = await getProducts();
-        renderMenu(menuItems);
+// Lyssna på klick för att ta bort från varukorgen
+document.addEventListener("click", (event) => {
+    if (event.target.classList.contains("remove-from-cart")) {
+        const itemId = parseInt(event.target.getAttribute("data-id"));
+        removeFromCart(itemId);
+        updateCart(); // Uppdatera både varukorgen och menyn
     }
-    if (document.getElementById("cart")) {
-        updateCart();
-    }
+});
+
+// När sidan laddas, rendera menyn och varukorgen
+document.addEventListener("DOMContentLoaded", () => {
+    renderMenu(); // Visar endast produkter i varukorgen
+    updateCart();
 });

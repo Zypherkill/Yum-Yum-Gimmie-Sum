@@ -2,19 +2,17 @@ import { getProducts } from "./api.js";
 import { addToCart, removeFromCart } from "./cart.js";
 import { globalEventListener } from "../../utils/globalEventListener.js";
 
-export let productData = [];
-
 export async function showMenu() {
 	//debuging
     console.log("showMenu called");
 
-    productData = await getProducts();
+    const productData = await getProducts();
 
      //debuging
     console.log("productData:", productData);
 
     const wrapperRef = document.querySelector('.menu-wrapper');
-    
+
 
     // Clear the wrapper before appending new elements
     wrapperRef.innerHTML = '';
@@ -41,7 +39,7 @@ export async function showMenu() {
   productData.forEach((item) => {
 		const menuItem = document.createElement('article');
 		menuItem.classList.add('menu-item');
-        
+
 		const itemName = document.createElement('h2');
 		itemName.textContent = item.name;
 		itemName.classList.add('menu-title')
@@ -72,7 +70,7 @@ export async function showMenu() {
 		menuItem.appendChild(itemPrice);
 		menuItem.appendChild(minusButton);
 		menuItem.appendChild(plusButton);
-		
+
 		wrapperRef.appendChild(menuRef);
 	})
 
@@ -91,7 +89,7 @@ export async function showMenu() {
      //remove from cart
     globalEventListener.add("click", ".fa-circle-minus", (event, button) => {
         const itemId = parseInt(button.getAttribute("data-id"));
-	
+
 		alert("removed! Item ID: " + itemId);
         removeFromCart(itemId);
     });
@@ -99,7 +97,7 @@ export async function showMenu() {
 
 globalEventListener.add("click", ".fa-solid.fa-cart-shopping", (event, button) => {
     const itemId = parseInt(button.getAttribute("data-id"));
-    
+
     // Redirect to the cart.html page
     window.location.href = "../pages/cart.html";
 });
