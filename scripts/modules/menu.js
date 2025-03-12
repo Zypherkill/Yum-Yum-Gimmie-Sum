@@ -1,31 +1,47 @@
-import { getProducts } from "../modules/api.js";
+import { getProducts } from "./api.js";
+import { addToCart, removeFromCart } from "./cart.js";
+import { globalEventListener } from "../../utils/globalEventListener.js";
+
+export let productData = [];
 
 export async function showMenu() {
-	const productData = await getProducts();
-	const wrapperRef = document.querySelector('.menu-wrapper');
+	//debuging
+    console.log("showMenu called");
 
-	// Skapar en sektion som håller texten "Meny" samt en ikon för att filtrera
-	const headerRef = document.createElement('section');
-	headerRef.classList.add('menu-header')
+    productData = await getProducts();
 
-	const headerText = document.createElement('h1');
-	headerText.textContent = "Meny";
+     //debuging
+    console.log("productData:", productData);
 
-	const filterIcon = document.createElement('i');
-	filterIcon.classList.add('fa-solid', 'fa-filter')
+    const wrapperRef = document.querySelector('.menu-wrapper');
+    
 
-	headerRef.appendChild(headerText);
-	headerRef.appendChild(filterIcon);
+    // Clear the wrapper before appending new elements
+    wrapperRef.innerHTML = '';
 
-	wrapperRef.appendChild(headerRef);
+    // Skapar en sektion som håller texten "Meny" samt en ikon för att filtrera
+    const headerRef = document.createElement('section');
+    headerRef.classList.add('menu-header');
 
-	// Populerar menyn med rätterna
-	const menuRef = document.createElement('section');
-	menuRef.classList.add('menu-items');
+    const headerText = document.createElement('h1');
+    headerText.textContent = "Meny";
 
-	productData.forEach((item) => {
+    const filterIcon = document.createElement('i');
+    filterIcon.classList.add('fa-solid', 'fa-filter');
+
+    headerRef.appendChild(headerText);
+    headerRef.appendChild(filterIcon);
+
+    wrapperRef.appendChild(headerRef);
+
+    // Populerar menyn med rätterna
+    const menuRef = document.createElement('section');
+    menuRef.classList.add('menu-items');
+
+  productData.forEach((item) => {
 		const menuItem = document.createElement('article');
 		menuItem.classList.add('menu-item');
+        
 		const itemName = document.createElement('h2');
 		itemName.textContent = item.name;
 		itemName.classList.add('menu-title')
@@ -44,9 +60,11 @@ export async function showMenu() {
 
 		const plusButton = document.createElement('i');
 		plusButton.classList.add('fa-solid', 'fa-circle-plus');
+		plusButton.setAttribute('data-id', item.id); // Set data-id attribute to item.id
 
 		const minusButton = document.createElement('i');
-		minusButton.classList.add('fa-solid', 'fa-circle-minus')
+		minusButton.classList.add('fa-solid', 'fa-circle-minus');
+		minusButton.setAttribute('data-id', item.id); // Set data-id attribute to item.id
 
 		menuRef.appendChild(menuItem);
 		menuItem.appendChild(itemName);
@@ -54,6 +72,41 @@ export async function showMenu() {
 		menuItem.appendChild(itemPrice);
 		menuItem.appendChild(minusButton);
 		menuItem.appendChild(plusButton);
+		
 		wrapperRef.appendChild(menuRef);
 	})
+
+    console.log("Menu items appended");
+
+    // Add to cart
+    globalEventListener.add("click", ".fa-circle-plus", async (event, button) => {
+        const itemId = parseInt(button.getAttribute("data-id"));
+        const menuItems = await getProducts();
+        const item = menuItems.find(item => item.id === itemId);
+        if (item) {
+            addToCart(item);
+			alert("Added to cart! Item ID: " + itemId);
+        }
+    });
+     //remove from cart
+    globalEventListener.add("click", ".fa-circle-minus", (event, button) => {
+        const itemId = parseInt(button.getAttribute("data-id"));
+	
+		alert("removed! Item ID: " + itemId);
+        removeFromCart(itemId);
+    });
 }
+
+globalEventListener.add("click", ".fa-solid.fa-cart-shopping", (event, button) => {
+    const itemId = parseInt(button.getAttribute("data-id"));
+    
+    // Redirect to the cart.html page
+    window.location.href = "../pages/cart.html";
+});
+
+// Call showMenu when the DOM is fully loaded
+globalEventListener.add("DOMContentLoaded", () => {
+    //debug
+    console.log("DOMContentLoaded event fired");
+    showMenu();
+});
