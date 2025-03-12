@@ -5,5 +5,10 @@ import { showNavigation } from "../utils/hamburgermenu.js";
 if (window.location.pathname === "/pages/bestallning.html") {
     placeOrder();
 }
-showMenu();
+
+if (window.location.pathname === "/pages/meny.html") {
+showMenu():
+
 showNavigation();
+}
+
