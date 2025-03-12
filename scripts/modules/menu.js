@@ -2,13 +2,13 @@ import { getProducts } from "./api.js";
 import { addToCart, removeFromCart } from "./cart.js";
 import { globalEventListener } from "../../utils/globalEventListener.js";
 
-
+export let productData = [];
 
 export async function showMenu() {
 	//debuging
     console.log("showMenu called");
 
-    const productData = await getProducts();
+    productData = await getProducts();
 
      //debuging
     console.log("productData:", productData);
@@ -41,6 +41,7 @@ export async function showMenu() {
   productData.forEach((item) => {
 		const menuItem = document.createElement('article');
 		menuItem.classList.add('menu-item');
+        
 		const itemName = document.createElement('h2');
 		itemName.textContent = item.name;
 		itemName.classList.add('menu-title')
