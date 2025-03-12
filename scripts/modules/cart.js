@@ -65,26 +65,24 @@ function updateCart() {
 
     const cart = getCart();
 
-    // Skapa HTML för varje produkt i varukorgen
+    if (cart.length === 0) {
+        cartContainer.innerHTML = "<p>Din varukorg är tom.</p>";
+        return;
+    }
+
     cartContainer.innerHTML = cart.map(item => `
         <article class="menu-item">
             <h2 class="menu-title">${item.name} x ${item.quantity}</h2>
-            <p class="menu-ingredients">${Array.isArray(item.ingredients) && item.ingredients.length > 0 ? item.ingredients.join(', ') : "Inga ingredienser"}</p>
             <p class="menu-price">${item.price * item.quantity} sek</p>
             <i class="fa-solid fa-circle-plus add-to-cart" data-id="${item.id}"></i>
             <i class="fa-solid fa-circle-minus remove-from-cart" data-id="${item.id}"></i>
         </article>
     `).join("");
 
-    // Beräkna totalpris
     const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
 
-    // Lägg till totalpris i slutet av varukorgen
     cartContainer.innerHTML += `<article class="menu-item total-price-container">
-    <p class="total-price">
-        <span>Total:</span>
-        <span>${totalPrice} SEK</span>
-    </p>
+        <p class="total-price">Total: ${totalPrice} SEK</p>
     </article>
 
     <article class="orderButtonArticle">
@@ -93,6 +91,7 @@ function updateCart() {
 
 }
 
+export { updateCart };
 
 // Lyssna på klick för att lägga till och ta bort från varukorgen
 document.addEventListener("click", (event) => {
@@ -118,4 +117,21 @@ document.addEventListener("click", (event) => {
 document.addEventListener("DOMContentLoaded", () => {
     renderMenu(); // Visar endast produkter i varukorgen
     updateCart();
+
+    // Kontrollerar så modalen existerar, annars kör den inte eventlyssnarna
+    const closeModalButton = document.querySelector(".close-modal");
+    const cartModal = document.getElementById("cart-modal");
+
+    if (closeModalButton && cartModal) {
+        closeModalButton.addEventListener("click", () => {
+            cartModal.classList.add("hidden");
+        });
+
+        cartModal.addEventListener("click", (event) => {
+            if (event.target === cartModal) {
+                cartModal.classList.add("hidden");
+            }
+        });
+    }
 });
+

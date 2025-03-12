@@ -1,5 +1,5 @@
 import { getProducts } from "./api.js";
-import { addToCart, removeFromCart } from "./cart.js";
+import { updateCart } from "./cart.js";
 import { globalEventListener } from "../../utils/globalEventListener.js";
 
 export async function showMenu() {
@@ -9,7 +9,7 @@ export async function showMenu() {
     console.log("productData:", productData);
 
     const wrapperRef = document.querySelector(".menu-wrapper");
-    wrapperRef.innerHTML = ""; // Clear the wrapper before appending new elements
+    wrapperRef.innerHTML = "";
 
     // Skapar en sektion som håller texten "Meny" samt en ikon för att filtrera
     const headerRef = document.createElement("section");
@@ -106,31 +106,15 @@ export async function showMenu() {
     }
 
     console.log("Menu items appended");
-
-    // Add to cart
-    globalEventListener.add("click", ".fa-circle-plus", async (event, button) => {
-        const itemId = parseInt(button.getAttribute("data-id"));
-        const menuItems = await getProducts();
-        const item = menuItems.find((item) => item.id === itemId);
-        if (item) {
-            addToCart(item);
-            alert("Added to cart! Item ID: " + itemId);
-        }
-    });
-
-    // Remove from cart
-    globalEventListener.add("click", ".fa-circle-minus", (event, button) => {
-        const itemId = parseInt(button.getAttribute("data-id"));
-        alert("Removed! Item ID: " + itemId);
-        removeFromCart(itemId);
-    });
 }
 
-globalEventListener.add("click", ".fa-solid.fa-cart-shopping", (event, button) => {
-    window.location.href = "../pages/cart.html";
+globalEventListener.add("click", ".fa-solid.fa-cart-shopping", () => {
+    updateCart(); // Uppdaterar innan vi visar modalen
+    document.getElementById("cart-modal").classList.remove("hidden");
 });
 
-// Call showMenu when the DOM is fully loaded
+
+// Kallar showMenu när DOMen har laddat
 globalEventListener.add("DOMContentLoaded", () => {
     console.log("DOMContentLoaded event fired");
     showMenu();

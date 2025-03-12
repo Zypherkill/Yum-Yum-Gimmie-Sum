@@ -5,7 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="../assets/style.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-	<script type="module" src="../scripts/main.js"></script>
+	<script type="module" src="../scripts/main.js" defer></script>
 	<title>Yum Yum Gimme Sum - Meny</title>
 </head>
 <body>
@@ -14,7 +14,7 @@
             <hr class="header__lines"><hr class="header__lines"><hr class="header__lines">
         </section>
 		<img src="/assets/images/white icon.png" alt="White logo of Yum Yum Gimme Sum" class="logo">
-		<i class="fa-solid fa-cart-shopping" style="color: #ffffff;"></i>
+		<i class="fa-solid fa-cart-shopping cart-icon" style="color: #ffffff;"></i>
 		<nav class="navigation">
 			<section class="nav-top">
 				<img src="/assets/images/white icon.png" alt="White logo of Yum Yum Gimme Sum" class="logo">
@@ -29,6 +29,13 @@
 	</header>
 	<div class="menu-wrapper">
 
-    <div>
+    </div>
+	<div id="cart-modal" class="cart-modal hidden">
+		<div class="cart-modal-content">
+			<span class="close-modal">&times;</span>
+			<div id="cart"></div>
+		</div>
+	</div>
+
 </body>
 </html>
