@@ -7,8 +7,8 @@ if (window.location.pathname === "/pages/bestallning.html") {
 }
 
 if (window.location.pathname === "/pages/meny.html") {
-showMenu():
+showMenu();
 
-showNavigation();
 }
+showNavigation();
 
