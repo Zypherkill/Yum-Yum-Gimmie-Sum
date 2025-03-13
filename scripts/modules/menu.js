@@ -120,6 +120,25 @@ globalEventListener.add("DOMContentLoaded", () => {
     showMenu();
 });
 
+// adding item to cart within menu
+globalEventListener.add("click", ".fa-circle-plus", async (event, button) => {
+    const itemId = parseInt(button.getAttribute("data-id"));
+    const menuItems = await getProducts(); 
+    const item = menuItems.find((product) => product.id === itemId);
+    if (item) {
+        addToCart(item);
+        updateCart();
+    }
+});
+
+/// removing item to cart within menu
+globalEventListener.add("click", ".fa-circle-minus", (event, button) => {
+    const itemId = parseInt(button.getAttribute("data-id"));
+    removeFromCart(itemId);
+    updateCart();
+});
+
+
 document.querySelector(".menu-wrapper")?.addEventListener("click", (event) => {
     if (event.target.classList.contains("add-to-cart")) {
         const itemId = parseInt(event.target.getAttribute("data-id"));
