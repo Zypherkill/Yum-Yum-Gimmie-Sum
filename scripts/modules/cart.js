@@ -92,7 +92,7 @@ function updateCart() {
     </article>
 
     <article class="orderButtonArticle">
-    <a href="/pages/bestallning.html" class="button button--top orderButton"> <button>TAKE MY MONEY</button></a>
+    <a href="../pages/bestallning.html" class="button button--top orderButton"> <button>TAKE MY MONEY</button></a>
     </article>`;
 
 }
