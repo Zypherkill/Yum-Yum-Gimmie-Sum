@@ -27,12 +27,15 @@ body {
 }
 
 .header {
-    width: 100%;
+    width: 475px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     align-items: center;
     justify-items: center;
-    padding-top: 0.5rem;
+    padding: 1rem 1.5rem;
+    background-color: var(--primary-bg);
+    border-bottom: 1px solid rgb(255, 255, 255, 0.2);
+
     .logo {
         grid-column: 2;
     }
@@ -64,6 +67,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    z-index: 999;
 
     .list-item {
         list-style-type: none;
@@ -110,13 +114,6 @@ body {
     top: 0;
 }
 
-.menu-page {
-    padding-left: 1rem;
-    padding-right: 1rem;
-    padding-bottom: 1rem;
-    width: 475px;
-}
-
 .header__lines {
     width: 2.5rem;
     height: 6px;
@@ -135,6 +132,7 @@ body {
     grid-template-columns: 1fr;
     justify-items: center;
     color: var(--primary-font-color);
+    align-items: center;
 }
 
 .cart-wrapper {
@@ -188,6 +186,7 @@ body {
         align-items: center;
         justify-content: center;
         cursor: pointer;
+        border-radius: 15px;
 
         button {
             color: var(--primary-font-color);
@@ -208,6 +207,7 @@ body {
     grid-row: 7;
     background-color: var(--primary-bg);
     border: 1px solid white;
+    align-self: start;
 }
 
 .about-us {
@@ -239,13 +239,11 @@ body {
     padding-bottom: 1rem;
 
     .menu-header {
-        display: flex;
-        justify-content: space-between;
+        text-align: center;
         font-size: 2rem;
         padding: 1rem;
     }
-
-
+    
 }
 
 .fa-solid {
@@ -307,8 +305,8 @@ body {
 .order-page {
     grid-template-rows: auto;
     .logo {
-        width: 6rem;
-        height: 6rem;
+        width: 8rem;
+        height: 8rem;
         grid-row: 1;
         align-self: center;
     }
@@ -428,4 +426,23 @@ button {
     font-size: 1rem;
     color: var(--primary-font-color);
     border: 1px solid white;
+    border-radius: 15px;
+    padding: 0.5rem;
+    appearance: none;
 }
+
+
+.blur {
+    filter: blur(5px);
+    }
+
+    .menu-items::-webkit-scrollbar {
+        width: 3px;
+        background-color: #696969;
+        border-radius: 10px;
+    }
+    
+    .menu-items::-webkit-scrollbar-thumb {
+        background: #ffffff;
+        border-radius: 10px;
+    }

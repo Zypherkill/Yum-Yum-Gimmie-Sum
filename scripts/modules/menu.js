@@ -18,41 +18,41 @@ export async function showMenu() {
     const headerText = document.createElement("h1");
     headerText.textContent = "Meny";
 
-    const filterIcon = document.createElement("i");
-    filterIcon.classList.add("fa-solid", "fa-filter");
+    // const filterIcon = document.createElement("i");
+    // filterIcon.classList.add("fa-solid", "fa-filter");
 
     headerRef.appendChild(headerText);
-    headerRef.appendChild(filterIcon);
+    // headerRef.appendChild(filterIcon);
     wrapperRef.appendChild(headerRef);
 
     // Skapar dropdown-menyn för filtrering
     const filterSelect = document.createElement("select");
     filterSelect.classList.add("filter-dropdown");
-    filterSelect.style.display = "none";
+    // filterSelect.style.display = "none";
     filterSelect.addEventListener("change", (event) => {
         filterMenu(event.target.value);
     });
 
     const allOption = document.createElement("option");
     allOption.value = "";
-    allOption.textContent = "All";
+    allOption.textContent = "Filter all";
     filterSelect.appendChild(allOption);
 
     const types = [...new Set(productData.map((item) => item.type))];
     types.forEach((type) => {
         const option = document.createElement("option");
-        option.value = type;
-        option.textContent = type;
+        option.value = `Filter ${type}`;
+        option.textContent = `Filter ${type}`;
         filterSelect.appendChild(option);
     });
 
     wrapperRef.appendChild(filterSelect);
 
     // Eventlyssnare på filterikonen för att visa/gömma dropdown-menyn
-    filterIcon.addEventListener("click", () => {
-        filterSelect.style.display =
-            filterSelect.style.display === "none" ? "block" : "none";
-    });
+    // filterIcon.addEventListener("click", () => {
+    //     filterSelect.style.display =
+    //         filterSelect.style.display === "none" ? "block" : "none";
+    // });
 
     // Skapar menysektionen
     const menuRef = document.createElement("section");
