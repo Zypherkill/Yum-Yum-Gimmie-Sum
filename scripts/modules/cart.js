@@ -1,5 +1,5 @@
 // Hämta varukorg
-function getCart() {
+export function getCart() {
     return JSON.parse(localStorage.getItem("cart")) || [];
 }
 
@@ -22,6 +22,7 @@ export function addToCart(item) {
     saveCart(cart);
     updateCart();
 }
+
 
 // Ta bort från varukorg
 export function removeFromCart(itemId) {
@@ -94,23 +95,23 @@ function updateCart() {
 export { updateCart };
 
 // Lyssna på klick för att lägga till och ta bort från varukorgen
-document.addEventListener("click", (event) => {
+document.getElementById("cart")?.addEventListener("click", (event) => {
     const itemId = parseInt(event.target.getAttribute("data-id"));
 
     if (event.target.classList.contains("remove-from-cart")) {
         removeFromCart(itemId);
-        updateCart(); // Uppdatera både varukorgen och menyn
+        updateCart();
     }
 
     if (event.target.classList.contains("add-to-cart")) {
         const cart = getCart();
         const item = cart.find(cartItem => cartItem.id === itemId);
-
         if (item) {
-            addToCart(item); // Lägg till en till av befintlig produkt
+            addToCart(item);
         }
     }
 });
+
 
 
 // När sidan laddas, rendera menyn och varukorgen

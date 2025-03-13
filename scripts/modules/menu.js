@@ -1,5 +1,5 @@
 import { getProducts } from "./api.js";
-import { updateCart } from "./cart.js";
+import { getCart, removeFromCart, updateCart, addToCart } from "./cart.js";
 import { globalEventListener } from "../../utils/globalEventListener.js";
 
 export async function showMenu() {
@@ -118,4 +118,20 @@ globalEventListener.add("click", ".fa-solid.fa-cart-shopping", () => {
 globalEventListener.add("DOMContentLoaded", () => {
     console.log("DOMContentLoaded event fired");
     showMenu();
+});
+
+document.querySelector(".menu-wrapper")?.addEventListener("click", (event) => {
+    if (event.target.classList.contains("add-to-cart")) {
+        const itemId = parseInt(event.target.getAttribute("data-id"));
+
+        // 🔥 Hämta rätt produkt från `productData`, INTE från varukorgen!
+        const item = productData.find(product => product.id === itemId);
+        if (!item) {
+            console.error("🚨 Produkt med ID", itemId, "hittades inte i productData!");
+            return;
+        }
+
+        addToCart(item); // Lägg till i varukorgen
+        updateCart(); // Uppdatera gränssnittet
+    }
 });
