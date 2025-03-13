@@ -3,11 +3,11 @@ import { placeOrder } from "./modules/delivery.js";
 import { showNavigation } from "../utils/hamburgermenu.js";
 import { displayReceipt } from "./modules/receipt.js";
 
-if (window.location.pathname === "/pages/bestallning.html") {
+if (window.location.pathname.includes ("/pages/bestallning.html")) {
     placeOrder();
 }
 
-if (window.location.pathname === "/pages/meny.html") {
+if (window.location.pathname.includes  ("/pages/meny.html")) {
     showMenu();
 
 }
