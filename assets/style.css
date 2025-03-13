@@ -214,7 +214,7 @@ body {
     padding: 1rem;
     overflow-y: scroll;
     gap: 1.5rem;
-    
+    height: 100%;
     .header {
         img {
             height: 5rem;
