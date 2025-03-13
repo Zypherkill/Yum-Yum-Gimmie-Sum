@@ -61,14 +61,19 @@ function renderMenu() {
 
 // Uppdatera varukorgen
 function updateCart() {
-    const cartContainer = document.getElementById("cart");
-    if (!cartContainer) return;
+    const cartText = document.getElementById("cart-text");
+    const cartContainer = document.getElementById("cart")
+    if (!cartText||!cartContainer) return;
 
     const cart = getCart();
+    const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
 
-    if (cart.length === 0) {
-        cartContainer.innerHTML = "<p>Din varukorg är tom.</p>";
-        return;
+    // Update the cart text
+    if (totalItems > 0) {
+        cartText.textContent = totalItems;
+        cartText.classList.remove("hidden"); 
+    } else {
+        cartText.classList.add("hidden");
     }
 
     cartContainer.innerHTML = cart.map(item => `
@@ -94,7 +99,7 @@ function updateCart() {
 
 export { updateCart };
 
-// Lyssna på klick för att lägga till och ta bort från varukorgen
+/* // Lyssna på klick för att lägga till och ta bort från varukorgen
 document.getElementById("cart")?.addEventListener("click", (event) => {
     const itemId = parseInt(event.target.getAttribute("data-id"));
 
@@ -110,7 +115,7 @@ document.getElementById("cart")?.addEventListener("click", (event) => {
             addToCart(item);
         }
     }
-});
+}); */
 
 
 
