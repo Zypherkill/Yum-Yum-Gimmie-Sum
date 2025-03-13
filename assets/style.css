@@ -179,7 +179,6 @@ body {
 }
 
 .button {
-        display: inline-block;
         text-decoration: none;
         height: 60%;
         width: 90%;
@@ -353,6 +352,7 @@ body {
 .menu-item.total-price-container {
     grid-column: 1 / -1;
     font-size: 30px;
+    padding-right: 0.7rem;
 }
 
 .total-price {
@@ -360,7 +360,7 @@ body {
     grid-column: 1 / -1;
     justify-content: space-between;
     width: 100%;
-    padding: 10px 10px 10px 0px;
+    padding: 10px;
     background-color: rgba(53, 49, 49, 0.24);
 
     span:last-child {
@@ -371,9 +371,26 @@ body {
 .orderButton {
     display: flex;
     height: 25%;
+    width: 95%;
+
 }
 
+.orderButton:hover {
+    background-color: #332f2f;
+}
 .orderButtonArticle {
     display: flex;
     justify-content: center;
+}
+
+button {
+    cursor: pointer;
+}
+
+.filter-dropdown {
+    background-color: var(--primary-bg);
+    text-align: center;
+    font-size: 1rem;
+    color: var(--primary-font-color);
+    border: 1px solid white;
 }
