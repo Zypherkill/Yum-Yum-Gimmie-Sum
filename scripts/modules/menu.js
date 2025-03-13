@@ -119,23 +119,49 @@ globalEventListener.add("DOMContentLoaded", () => {
     console.log("DOMContentLoaded event fired");
     showMenu();
 });
-
-// adding item to cart within menu
+// Handle item addition to the cart
 globalEventListener.add("click", ".fa-circle-plus", async (event, button) => {
-    const itemId = parseInt(button.getAttribute("data-id"));
-    const menuItems = await getProducts(); 
-    const item = menuItems.find((product) => product.id === itemId);
-    if (item) {
-        addToCart(item);
-        updateCart();
-    }
+    const itemId = Number(button.getAttribute("data-id"));
+    const availableItems = await getProducts(); 
+    const selectedItem = availableItems.find(product => product.id === itemId);
+    
+    if (!selectedItem) return;
+
+    addToCart(selectedItem);
+    updateCart();
+
+    // Locate the menu item in the DOM
+    const parentItem = button.closest(".menu-item");
+    const nameElement = parentItem.querySelector(".menu-title");
+
+    // Retrieve the latest quantity from storage
+    const currentCart = getCart();
+    const itemInCart = currentCart.find(product => product.id === itemId);
+    const newQuantity = itemInCart ? itemInCart.quantity : 1;
+
+    // Update the display
+    nameElement.textContent = `${selectedItem.name} x ${newQuantity}`;
 });
 
-/// removing item to cart within menu
+// Handle item removal from the cart
 globalEventListener.add("click", ".fa-circle-minus", (event, button) => {
-    const itemId = parseInt(button.getAttribute("data-id"));
+    const itemId = Number(button.getAttribute("data-id"));
     removeFromCart(itemId);
     updateCart();
+
+    // Find the related menu entry
+    const parentItem = button.closest(".menu-item");
+    const nameElement = parentItem.querySelector(".menu-title");
+
+    // Get the updated cart data
+    const updatedCart = getCart();
+    const itemInCart = updatedCart.find(product => product.id === itemId);
+    const newQuantity = itemInCart ? itemInCart.quantity : 0;
+
+    // Adjust the item label based on quantity
+    nameElement.textContent = newQuantity > 0 
+        ? `${itemInCart.name} x ${newQuantity}` 
+        : itemInCart.name;
 });
 
 
