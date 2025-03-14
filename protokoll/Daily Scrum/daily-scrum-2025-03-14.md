@@ -1,36 +1,47 @@
-Mötesprotokoll (2025-03-14)
-Sätt en timer på 15 minuter
+# Mötesprotokoll (2025-03-14)
 
-Närvarande
+## Närvarande
 Hannes
+
 Nikki
+
 Tim
+
 Robin O
+
 Emund
 
+## Protokoll
 Vad gjorde du igår?
+
 Vad ska du göra idag?
+
 Finns det några hinder?
 
-Hannes
+### Hannes
 Satt med styling tillsammans med Tim
+
 Sitta i sprint möten
 
-Nikki
+### Nikki
 Bugfixar
+
 Sitta i sprint möten
 
-Tim
+### Tim
 Satt med styling tillsammans med Hannes
+
 Sitta i sprint möten
 
-Robin O
+### Robin O
 Hjälpte Nikki med att lösa I cart och menu, tog alerts och la till en notifikation på carten.
+
 Sitta i sprint möten
 
-Emund
+### Emund
 Han gjorde kvitto funktionen
+
 Sitta i sprint möten
 
-Övrigt
+### Övrigt
 Är det någon som behöver hjälp? Bestäm vem som hoppar in och stöttar
