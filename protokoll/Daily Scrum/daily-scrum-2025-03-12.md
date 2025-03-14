@@ -1,4 +1,4 @@
-# Mötesprotokoll (20250312)
+# Mötesprotokoll (2025-03-12)
 
 ## Närvarande
 Hannes
