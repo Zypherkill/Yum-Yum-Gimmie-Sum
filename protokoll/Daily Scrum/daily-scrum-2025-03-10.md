@@ -1,10 +1,14 @@
 # Mötesprotokoll (2025-03-10)
 
-Närvarande
+## Närvarande
 Hannes
+
 Nikki
+
 Emund
+
 Robin
+
 Tim
 
 ## Protokoll
