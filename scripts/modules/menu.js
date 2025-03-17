@@ -180,32 +180,38 @@ document.querySelector(".menu-wrapper")?.addEventListener("click", (event) => {
         updateCart(); // Uppdatera gränssnittet
     }
 });
-const cartIcon = document.querySelector(".cart-icon");
+
 const cartDropdown = document.getElementById("cart-dropdown");
 
-cartIcon.addEventListener("mouseenter", () => {
+// Show dropdown on hover over cart icon
+globalEventListener.add("mouseover", ".cart-icon", () => {
     updateCartDropdown();
     cartDropdown.classList.add("show");
 });
 
-cartIcon.addEventListener("mouseleave", () => {
+// Hide dropdown with a slight delay
+globalEventListener.add("mouseout", ".cart-icon", () => {
     setTimeout(() => {
-        cartDropdown.classList.remove("show");
-    }, 300); // Delay hiding to allow hovering over the dropdown
+        if (!cartDropdown.matches(":hover")) {
+            cartDropdown.classList.remove("show");
+        }
+    }, 200); // Allow time to move to dropdown
 });
 
-cartDropdown.addEventListener("mouseenter", () => {
-    cartDropdown.classList.add("show"); // Keep visible when hovered
+// Keep dropdown visible when hovered over
+globalEventListener.add("mouseover", "#cart-dropdown", () => {
+    cartDropdown.classList.add("show");
 });
 
-cartDropdown.addEventListener("mouseleave", () => {
-    cartDropdown.classList.remove("show"); // Hide when leaving
+// Hide dropdown when mouse leaves it
+globalEventListener.add("mouseout", "#cart-dropdown", () => {
+    cartDropdown.classList.remove("show");
 });
 
 // Function to update the dropdown content
 function updateCartDropdown() {
     const cart = getCart();
-    cartDropdown.innerHTML = cart.length > 0 
-        ? cart.map(item => `<p>${item.name} x ${item.quantity}</p>`).join("")
+    cartDropdown.innerHTML = cart.length > 0
+        ? cart.map(item => `<p>${item.name} × ${item.quantity}</p>`).join("")
         : "<p>Din varukorg är tom.</p>";
 }
