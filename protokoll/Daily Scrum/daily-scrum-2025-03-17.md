@@ -14,9 +14,7 @@ Emund
 
 ## Protokoll
 - Vad gjorde du igår?
- 
 - Vad ska du göra idag?
-  
 - Finns det några hinder?
 
 ### Hannes
