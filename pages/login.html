@@ -25,21 +25,22 @@
             </section>
         </nav>
     </header>
-    <div class="content-wrapper">
+    <div class="content-wrapper login-wrapper">
+        <h1 class="login-title">LOGGA IN</h1>
         <form class="login-form" aria-labelledby="login-title">
-			<h2 id="login-title">Välkommen till Yum Yum Gimme Sum!</h2>
+			<h2 id="form-title">Välkommen till Yum Yum Gimme Sum!</h2>
 
-			<p>Logga in nedan för att se din orderhistorik.</p>
+			<p class="login-text" >Logga in nedan för att se din orderhistorik.</p>
             <label for="email">E-post eller användarnamn:</label>
             <input type="text" id="email" name="email" required>
 
             <label for="password">Lösenord:</label>
             <input type="password" id="password" name="password" required>
+            <p class="new-account" >Inget konto? <a href="register.html">Skapa ett här</a></p>
 
-            <button type="submit">Logga in</button>
+            <button class="login-button" type="submit">Logga in</button>
         </form>
 
-        <p>Inget konto? <a href="register.html">Skapa ett här</a></p>
     </div>
 </body>
 </html>
