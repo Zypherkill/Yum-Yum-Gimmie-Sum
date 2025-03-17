@@ -1,0 +1,47 @@
+# Mötesprotokoll (2025-03-14)
+
+## Närvarande
+Hannes
+
+Nikki
+
+Tim
+
+Robin O
+
+Emund
+
+## Protokoll
+Vad gjorde du igår?
+
+Vad ska du göra idag?
+
+Finns det några hinder?
+
+### Hannes
+Satt med styling tillsammans med Tim
+
+Sitta i sprint möten
+
+### Nikki
+Bugfixar
+
+Sitta i sprint möten
+
+### Tim
+Satt med styling tillsammans med Hannes
+
+Sitta i sprint möten
+
+### Robin O
+Hjälpte Nikki med att lösa I cart och menu, tog alerts och la till en notifikation på carten.
+
+Sitta i sprint möten
+
+### Emund
+Han gjorde kvitto funktionen
+
+Sitta i sprint möten
+
+### Övrigt
+Är det någon som behöver hjälp? Bestäm vem som hoppar in och stöttar
