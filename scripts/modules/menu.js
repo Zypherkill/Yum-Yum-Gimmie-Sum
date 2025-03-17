@@ -144,8 +144,10 @@ globalEventListener.add("click", ".fa-circle-plus", async (event, button) => {
 });
 
 // Handle item removal from the cart
-globalEventListener.add("click", ".fa-circle-minus", (event, button) => {
+globalEventListener.add("click", ".fa-circle-minus", async (event, button) => {
     const itemId = Number(button.getAttribute("data-id"));
+    const availableItems = await getProducts(); 
+    const selectedItem = availableItems.find(product => product.id === itemId);
     removeFromCart(itemId);
     updateCart();
 
@@ -158,10 +160,15 @@ globalEventListener.add("click", ".fa-circle-minus", (event, button) => {
     const itemInCart = updatedCart.find(product => product.id === itemId);
     const newQuantity = itemInCart ? itemInCart.quantity : 0;
 
-    // Adjust the item label based on quantity
+    //Kollar om itemInCart är odefinierad
+if (itemInCart) {
     nameElement.textContent = newQuantity > 0 
         ? `${itemInCart.name} x ${newQuantity}` 
         : itemInCart.name;
+} else {
+    //Sätter ditt namnet som default
+    nameElement.textContent = `${selectedItem.name}`;
+}
 });
 
 
