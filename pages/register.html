@@ -3,8 +3,8 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="./assets/style.css">
-	<script type="module" src="./scripts/main.js"></script>
+	<link rel="stylesheet" href="../assets/style.css">
+	<script type="module" src="../scripts/main.js"></script>
 	<title>Yum Yum Gimme Sum - Registrera</title>
 </head>
 <body>
@@ -26,6 +26,25 @@
 		</nav>
 	</header>
 	<div class="content-wrapper">
-    <div>
+		<form class="register-form" aria-labelledby="register-title">
+			<h2 id="register-title">Välkommen till Yum Yum Gimme Sum!</h2>
+
+			<p>Genom att skapa ett konto nedan kan du spara och se din orderhistorik</p>
+
+			<label for="name">Namn:</label>
+			<input type="text" id="name" name="name" autocomplete="name" required>
+
+			<label for="email">Email:</label>
+			<input type="text" id="email" name="email" autocomplete="off" required>
+
+			<label for="password">Lösenord:</label>
+			<input type="password" id="password" name="password" autocomplete="off" required>
+
+			<button type="submit">Registrera</button>
+		</form>
+
+		<p>Redan användare? <a href="login.html">Logga in här</a></p>
+	</div>
+
 </body>
 </html>
