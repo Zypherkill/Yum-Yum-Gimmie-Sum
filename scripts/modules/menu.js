@@ -180,3 +180,32 @@ document.querySelector(".menu-wrapper")?.addEventListener("click", (event) => {
         updateCart(); // Uppdatera gränssnittet
     }
 });
+const cartIcon = document.querySelector(".cart-icon");
+const cartDropdown = document.getElementById("cart-dropdown");
+
+cartIcon.addEventListener("mouseenter", () => {
+    updateCartDropdown();
+    cartDropdown.classList.add("show");
+});
+
+cartIcon.addEventListener("mouseleave", () => {
+    setTimeout(() => {
+        cartDropdown.classList.remove("show");
+    }, 300); // Delay hiding to allow hovering over the dropdown
+});
+
+cartDropdown.addEventListener("mouseenter", () => {
+    cartDropdown.classList.add("show"); // Keep visible when hovered
+});
+
+cartDropdown.addEventListener("mouseleave", () => {
+    cartDropdown.classList.remove("show"); // Hide when leaving
+});
+
+// Function to update the dropdown content
+function updateCartDropdown() {
+    const cart = getCart();
+    cartDropdown.innerHTML = cart.length > 0 
+        ? cart.map(item => `<p>${item.name} x ${item.quantity}</p>`).join("")
+        : "<p>Din varukorg är tom.</p>";
+}
