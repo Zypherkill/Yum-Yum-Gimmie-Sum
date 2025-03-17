@@ -3,6 +3,7 @@ import { placeOrder } from "./modules/delivery.js";
 import { showNavigation } from "../utils/hamburgermenu.js";
 import { displayReceipt } from "./modules/receipt.js";
 import { validateRegistration, validateLogin } from "./modules/userHandling.js"
+import { showAdminPanel } from "./modules/adminPanel.js";
 
 if (window.location.pathname.includes ("/pages/bestallning.html")) {
     placeOrder();
@@ -18,5 +19,9 @@ if (window.location.pathname.includes ("/pages/register.html")) {
 
 if (window.location.pathname.includes ("/pages/login.html")) {
     validateLogin();
+}
+
+if (window.location.pathname.includes ("/pages/adminPanel.html")) {
+    showAdminPanel();
 }
 showNavigation();
