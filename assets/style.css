@@ -575,6 +575,7 @@ input {
     border-radius: 5px;
     border: 1px solid black;
     height: 2.5rem;
+}
 .cart-dropdown {
     position: absolute;
     background: transparent;
@@ -588,4 +589,5 @@ input {
 .cart-dropdown.show {
     display: block;
 }
+
 
