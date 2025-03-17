@@ -6,6 +6,8 @@
     --button-color: #353131;
     --primary-font-color: white;
     --secondary-font-color: black;
+    --login-background-color: #F3E4E1;
+    --login-button-color: #2F2926;
 }
 
 * {
@@ -306,8 +308,7 @@ body {
     }
 }
 
-.menu-item:hover,
-a:hover {
+.menu-item:hover,a:hover {
     background-color: rgba(241, 240, 236, 0.2);
 }
 
@@ -518,6 +519,62 @@ button {
     font-weight: bold;
 }
 
+.login-wrapper {
+    grid-template-rows: 10rem 1fr 15rem;
+
+    .login-title {
+        align-self: start;
+        margin-top: 2rem;
+    }
+}
+
+.login-form {
+    border-radius: 10px;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+    color: #2F2926;
+    background-color: var(--login-background-color);
+    grid-row: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.7rem;
+    height: 100%;
+    margin: 3rem;
+
+    label, .new-account {
+        align-self: start;
+        padding-left: 1.2rem;
+    }
+
+    label {
+        font-weight: 600;
+    }
+    
+
+    #form-title, .login-text {
+        text-align: center;
+        width: 80%;
+    }
+    
+}
+
+.login-button {
+    background-color: var(--login-button-color);
+    width: 70%;
+    color: var(--primary-font-color);
+    font-size: 1.5rem;
+    padding: 1rem;
+    border: none;
+    border-radius: 30px;
+}
+
+input {
+    background-color: transparent;
+    width: 90%;
+    border-radius: 5px;
+    border: 1px solid black;
+    height: 2.5rem;
 .cart-dropdown {
     position: absolute;
     background: transparent;
