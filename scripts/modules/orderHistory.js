@@ -13,25 +13,25 @@ export function showOrderHistory() {
     historyContainer.innerHTML =
         userOrders.length > 0
             ? userOrders
-                  .map(
-                      (order) => `
+                .map(
+                    (order) => `
             <div class="order">
                 <h2>Order: ${order.id}</h2>
                 <ul>
                     ${order
-                        .map(
-                            (item) =>
-                                `<li>${item.name} - ${item.quantity} x ${item.price} sek</li>`
-                        )
-                        .join("")}
+                            .map(
+                                (item) =>
+                                    `<li>${item.name} - ${item.quantity} x ${item.price} sek</li>`
+                            )
+                            .join("")}
                 </ul>
                 <p>Totalt: ${order.reduce(
-                    (sum, item) => sum + item.price * item.quantity,
-                    0
-                )} sek</p>
+                                (sum, item) => sum + item.price * item.quantity,
+                                0
+                            )} sek</p>
             </div>
         `
-                  )
-                  .join("")
+                )
+                .join("")
             : "<p>Du har inga tidigare ordrar.</p>";
 }

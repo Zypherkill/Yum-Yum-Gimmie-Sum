@@ -5,19 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Panel</title>
     <link href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    
+    <script type="module" src="../scripts/modules/adminPanel.js"></script> <!-- External JS -->
     <link rel="stylesheet" href="/assets/style.css"> <!-- External CSS -->
-    <script type="module" src="../scripts/main.js"></script> <!-- External JS -->
 </head>
 <body>
-    
-
     <h1>Admin Panel</h1>
 
     <!-- Admin Navigation Menu -->
     <div class="admin-menu">
         <button id="ordersMenuBtn" class="menu-btn active">Orders</button>
         <button id="usersMenuBtn" class="menu-btn">Users</button>
-    
     </div>
 
     <!-- Admin Controls (Search and Filter) -->
@@ -30,6 +28,13 @@
             <option value="Completed">Completed</option>
         </select> 
     </div>
+<!-- Add this after your Orders and Users table -->
+<div class="order-history-container">
+    <h2>Your Order History</h2>
+    <div class="history-container">
+        <!-- Order history will be populated here by the JavaScript -->
+    </div>
+</div>
 
     <!-- Orders Table -->
     <div id="ordersTableContainer" class="table-container">
@@ -65,6 +70,5 @@
         </table>
     </div>
 
-    <script src="/scripts/modules/adminPanel.js"></script> <!-- External JS file -->
 </body>
 </html>

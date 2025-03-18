@@ -3,7 +3,6 @@ import { placeOrder } from "./modules/delivery.js";
 import { showNavigation } from "../utils/hamburgermenu.js";
 import { displayReceipt } from "./modules/receipt.js";
 
-import { validateRegistration, validateLogin } from "./modules/userHandling.js"
 
 import { showAdminPanel } from "./modules/adminPanel.js";
 
@@ -14,10 +13,6 @@ import { showOrderHistory } from "./modules/orderHistory.js";
 
 
 
-if (window.location.pathname.includes("/pages/bestallning.html")) {
-
-    placeOrder();
-}
 
 if (window.location.pathname.includes("/pages/meny.html")) {
     showMenu();
@@ -41,9 +36,11 @@ if (window.location.pathname.includes("/pages/location.html")) {
 
 }
 
-
 if (window.location.pathname.includes("/pages/orderhistorik.html")) {
     showOrderHistory();
 }
 
-showNavigation();
+
+if (!window.location.pathname.includes("/pages/bestallning.html") ) {
+  displayReceipt();
+}
