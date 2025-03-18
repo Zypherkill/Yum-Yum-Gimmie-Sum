@@ -108,7 +108,7 @@ export async function showMenu() {
     console.log("Menu items appended");
 }
 
-globalEventListener.add("click", ".fa-solid.fa-cart-shopping", () => {
+globalEventListener.add("click", ".fa-cart-shopping", () => {
     updateCart(); // Uppdaterar innan vi visar modalen
     document.getElementById("cart-modal").classList.remove("hidden");
 });
