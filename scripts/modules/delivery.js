@@ -1,7 +1,7 @@
 import { saveOrderHistory } from "./userHandling.js";
 import { generateOrderNumber } from "./orderHistory.js";
 
-function displayETA(eta) {
+function displayETA(eta, orderNumberValue) {
     let formattedETA = formatTime(eta);
 
     let article = document.createElement("article");
@@ -19,10 +19,8 @@ function displayETA(eta) {
     img.alt = "image of delivery container";
 
     h2.textContent = "Din mat är på väg!";
-
     p.textContent = `ETA ${formattedETA} min.`;
-
-    orderNumber.textContent = generateOrderNumber();
+    orderNumber.textContent = `${orderNumberValue}`; // Använder samma ordernummer som visas på skärmen
 
     article.appendChild(img);
     article.appendChild(h2);
@@ -32,21 +30,30 @@ function displayETA(eta) {
     document.querySelector(".content-wrapper").appendChild(article);
 }
 
+
 function getRandomTime(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
 export function placeOrder() {
     let eta = getRandomTime(15, 30);
-    displayETA(eta);
+    const orderNumber = generateOrderNumber();
+
+    displayETA(eta, orderNumber);
 
     const cart = JSON.parse(localStorage.getItem("cart")) || [];
     if (cart.length > 0) {
-        saveOrderHistory(cart);
-        localStorage.setItem("lastOrder", JSON.stringify(cart)); // Save the order for receipt display
-        localStorage.removeItem("cart"); // Clear the cart after placing the order
+        const orderWithNumber = {
+            orderNumber: orderNumber,
+            items: cart,
+        };
+
+        saveOrderHistory(orderWithNumber);
+        localStorage.setItem("lastOrder", JSON.stringify(orderWithNumber));
+        localStorage.removeItem("cart");
     }
 }
+
 
 function formatTime(time) {
     let minutes = time % 60;
