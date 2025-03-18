@@ -1,29 +1,39 @@
 <!DOCTYPE html>
 <html lang="sv">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="../assets/style.css" />
+        <script type="module" src="../scripts/main.js"></script>
+        <title>Yum Yum Gimme Sum - Beställning</title>
+    </head>
 
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="../assets/style.css">
-	<script type="module" src="../scripts/main.js"></script>
-	<title>Yum Yum Gimme Sum - Beställning</title>
-</head>
+    <body>
+        <div class="content-wrapper order-page">
+            <a href="../index.html">
+                <img
+                    src="../assets/images/white icon.png"
+                    alt="White logo of Yum Yum Gimme Sum"
+                    class="logo"
+                />
+            </a>
 
-<body>
-	
-	<div class="content-wrapper order-page">
-    
-		<a href="../index.html"> <img src="../assets/images/white icon.png" alt="White logo of Yum Yum Gimme Sum" class="logo"> </a>
-    
-		<button id="new-order" class="button button--top">GÖR NY BESTÄLLNING</button>
-        <button id="receipt-button" class="button button--bottom">SE KVITTO</button>
-		<div>
-      
-			<div id="receipt-overlay" class="overlay">
-				<div class="overlay-content">
-					<span id="close-overlay" class="close-button">&times;</span>
-					<div class="receipt-container"></div>
-				</div>
-			</div>
-</body>
+            <button id="new-order" class="button button--top">
+                GÖR NY BESTÄLLNING
+            </button>
+            <button id="receipt-button" class="button button--bottom">
+                SE KVITTO
+            </button>
+            <div>
+                <div id="receipt-overlay" class="overlay">
+                    <div class="overlay-content">
+                        <span id="close-overlay" class="close-button"
+                            >&times;</span
+                        >
+                        <div class="receipt-container"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
 </html>
