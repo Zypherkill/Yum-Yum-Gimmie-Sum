@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../assets/style.css">
     <script type="module" src="../scripts/main.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <title>Yum Yum Gimme Sum - Logga In</title>
 </head>
 <body>
@@ -12,23 +13,24 @@
         <section class="hamburger-menu">
             <hr class="header__lines"><hr class="header__lines"><hr class="header__lines">
         </section>
-        <img src="../assets/images/white icon.png" alt="White logo of Yum Yum Gimme Sum" class="logo">
+        <a href="../index.html"> <img src="../assets/images/white icon.png" alt="White logo of Yum Yum Gimme Sum" class="logo"> </a>
         <nav class="navigation">
             <section class="nav-top">
                 <img src="../assets/images/white icon.png" alt="White logo of Yum Yum Gimme Sum" class="logo">
                 <i class="fa-solid fa-xmark" style="color: #ffffff;"></i>
             </section>
             <section class="list-item">
-                <a href="#">LOGGA IN</a>
-                <a href="meny.html">SE MENY</a>
-                <a href="om_oss.html">OM OSS</a>
+                <a href="./login.html">LOGGA IN/REGISTRERA DIG</a>
+                <a href="./meny.html">SE MENY</a>
+                <a href="./om_oss.html">OM OSS</a>
+                <a href="./location.html">HITTA OSS</a>
             </section>
         </nav>
     </header>
     <div class="content-wrapper login-wrapper">
         <h1 class="login-title">LOGGA IN</h1>
         <form class="login-form" aria-labelledby="login-title">
-			<h2 id="form-title">Välkommen till Yum Yum Gimme Sum!</h2>
+			<h2 class="form-title">Välkommen till Yum Yum Gimme Sum!</h2>
 
 			<p class="login-text" >Logga in nedan för att se din orderhistorik.</p>
             <label for="email">E-post eller användarnamn:</label>
@@ -36,7 +38,7 @@
 
             <label for="password">Lösenord:</label>
             <input type="password" id="password" name="password" required>
-            <p class="new-account" >Inget konto? <a href="register.html">Skapa ett här</a></p>
+            <p class="account" >Inget konto? <a href="register.html">Skapa ett här</a></p>
 
             <button class="login-button" type="submit">Logga in</button>
         </form>
