@@ -317,8 +317,8 @@ body {
 .order-page {
     grid-template-rows: auto;
     .logo {
-        width: 8rem;
-        height: 8rem;
+        width: 5rem;
+        height: 5rem;
         grid-row: 1;
         align-self: center;
     }
