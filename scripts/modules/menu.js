@@ -119,56 +119,64 @@ globalEventListener.add("DOMContentLoaded", () => {
     console.log("DOMContentLoaded event fired");
     showMenu();
 });
-// Handle item addition to the cart
+
+//handle item addition to the cart
 globalEventListener.add("click", ".fa-circle-plus", async (event, button) => {
     const itemId = Number(button.getAttribute("data-id"));
-    const availableItems = await getProducts(); 
+    const availableItems = await getProducts();
     const selectedItem = availableItems.find(product => product.id === itemId);
-    
+
     if (!selectedItem) return;
 
+    // Add to cart
     addToCart(selectedItem);
+
+    // Update cart UI
     updateCart();
 
-    // Locate the menu item in the DOM
-    const parentItem = button.closest(".menu-item");
-    const nameElement = parentItem.querySelector(".menu-title");
+    // Find and update the menu item quantity
+    const parentItem = document.querySelector(`.menu-item [data-id="${itemId}"]`)?.closest(".menu-item");
+    if (parentItem) {
+        const nameElement = parentItem.querySelector(".menu-title");
 
-    // Retrieve the latest quantity from storage
-    const currentCart = getCart();
-    const itemInCart = currentCart.find(product => product.id === itemId);
-    const newQuantity = itemInCart ? itemInCart.quantity : 1;
+        // Retrieve updated cart data
+        const currentCart = getCart();
+        const itemInCart = currentCart.find(product => product.id === itemId);
+        const newQuantity = itemInCart ? itemInCart.quantity : 1;
 
-    // Update the display
-    nameElement.textContent = `${selectedItem.name} x ${newQuantity}`;
-});
+        // Update menu display to match the cart
+        nameElement.textContent = `${selectedItem.name
+            } x ${newQuantity}`;
+    }
+}
+);
+
 
 // Handle item removal from the cart
 globalEventListener.add("click", ".fa-circle-minus", async (event, button) => {
     const itemId = Number(button.getAttribute("data-id"));
-    const availableItems = await getProducts(); 
+    const availableItems = await getProducts();
     const selectedItem = availableItems.find(product => product.id === itemId);
-    removeFromCart(itemId);
-    updateCart();
 
-    // Find the related menu entry
-    const parentItem = button.closest(".menu-item");
-    const nameElement = parentItem.querySelector(".menu-title");
+    // Remove item from cart
+    removeFromCart(itemId);
+
+    // Update cart UI
+    updateCart();
 
     // Get the updated cart data
     const updatedCart = getCart();
     const itemInCart = updatedCart.find(product => product.id === itemId);
     const newQuantity = itemInCart ? itemInCart.quantity : 0;
 
-    //Kollar om itemInCart är odefinierad
-if (itemInCart) {
-    nameElement.textContent = newQuantity > 0 
-        ? `${itemInCart.name} x ${newQuantity}` 
-        : itemInCart.name;
-} else {
-    //Sätter ditt namnet som default
-    nameElement.textContent = `${selectedItem.name}`;
-}
+    //Update the menu quantity text
+    const parentItem = document.querySelector(`.menu-item [data-id="${itemId}"]`)?.closest(".menu-item");
+    if (parentItem) {
+        const nameElement = parentItem.querySelector(".menu-title");
+        nameElement.textContent = newQuantity > 0
+            ? `${selectedItem.name} x ${newQuantity}`
+            : selectedItem.name;
+    }
 });
 
 
