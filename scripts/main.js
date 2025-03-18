@@ -47,6 +47,7 @@ if (window.location.pathname.includes("/pages/orderhistorik.html")) {
 }
 
 
-if (!window.location.pathname.includes("/pages/bestallning.html") ) {
-  displayReceipt();
+if (window.location.pathname.includes("/pages/bestallning.html")) {
+    placeOrder();
+    displayReceipt();
 }
