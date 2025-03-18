@@ -577,6 +577,7 @@ input {
     border-radius: 5px;
     border: 1px solid black;
     height: 2.5rem;
+    padding-left: 0.5rem;
 }
 .cart-dropdown {
     position: absolute;
