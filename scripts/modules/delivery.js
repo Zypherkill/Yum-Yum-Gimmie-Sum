@@ -20,7 +20,7 @@ function displayETA(eta, orderNumberValue) {
 
     h2.textContent = "Din mat är på väg!";
     p.textContent = `ETA ${formattedETA} min.`;
-    orderNumber.textContent = `${orderNumberValue}`; // Använder samma ordernummer som visas på skärmen
+    orderNumber.textContent = `${orderNumberValue}`; // Hej Hannes, Använder samma ordernummer som visas på skärmen
 
     article.appendChild(img);
     article.appendChild(h2);
@@ -39,8 +39,8 @@ export function placeOrder() {
     let eta = getRandomTime(15, 30);
     const orderNumber = generateOrderNumber();
 
-    displayETA(eta, orderNumber);
-
+    displayETA(eta, orderNumber); // Hej Hannes
+    // Hej Hannes, se nedan också
     const cart = JSON.parse(localStorage.getItem("cart")) || [];
     if (cart.length > 0) {
         const orderWithNumber = {
@@ -48,6 +48,12 @@ export function placeOrder() {
             items: cart,
         };
 
+        // Spara alla ordrar
+        let orderHistory = JSON.parse(localStorage.getItem("orderHistory")) || [];
+        orderHistory.push(orderWithNumber);
+        localStorage.setItem("orderHistory", JSON.stringify(orderHistory));
+
+        // Sparar senaste ordern
         saveOrderHistory(orderWithNumber);
         localStorage.setItem("lastOrder", JSON.stringify(orderWithNumber));
         localStorage.removeItem("cart");
