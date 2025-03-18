@@ -1,4 +1,5 @@
 import { saveOrderHistory } from "./userHandling.js";
+import { generateOrderNumber } from "./orderHistory.js";
 
 function displayETA(eta) {
     let formattedETA = formatTime(eta);
@@ -7,6 +8,7 @@ function displayETA(eta) {
     let img = document.createElement("img");
     let h2 = document.createElement("h2");
     let p = document.createElement("p");
+    let orderNumber = document.createElement("p");
 
     article.classList.add("delivery");
     img.classList.add("delivery__img");
@@ -20,9 +22,12 @@ function displayETA(eta) {
 
     p.textContent = `ETA ${formattedETA} min.`;
 
+    orderNumber.textContent = generateOrderNumber();
+
     article.appendChild(img);
     article.appendChild(h2);
     article.appendChild(p);
+    article.appendChild(orderNumber);
 
     document.querySelector(".content-wrapper").appendChild(article);
 }

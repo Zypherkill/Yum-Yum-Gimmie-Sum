@@ -11,10 +11,16 @@
 <body>
 	<header class="header">
 		<section class="hamburger-menu">
-			<hr class="header__lines"><hr class="header__lines"><hr class="header__lines">
-		</section>
+            <hr class="header__lines"><hr class="header__lines"><hr class="header__lines">
+        </section>
 		<a href="../index.html"> <img src="../assets/images/white icon.png" alt="White logo of Yum Yum Gimme Sum" class="logo"> </a>
-		<i class="fa-solid fa-cart-shopping" style="color: #ffffff;"></i>
+		<div class="cart-container">
+			<i class="fa-solid fa-cart-shopping cart-icon" style="color: #ffffff;">
+				<span id="cart-text" class="cart-text hidden">0</span>
+			</i>
+			<span id="cart-dropdown" class="cart-dropdown hidden"></span>
+		</div>
+		
 		<nav class="navigation user-menu">
 			<section class="nav-top">
 				<img src="../assets/images/white icon.png" alt="White logo of Yum Yum Gimme Sum" class="logo">

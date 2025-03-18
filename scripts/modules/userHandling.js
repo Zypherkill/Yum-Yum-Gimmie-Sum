@@ -206,7 +206,7 @@ function createMessageBox() {
 }
 
 
-function logoutUser() {
+export function logoutUser() {
     const logoutLink = document.querySelector('.log-out');
     if (!logoutLink) return; // Avbryt om elementet inte finns
 

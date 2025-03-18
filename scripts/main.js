@@ -10,6 +10,12 @@ import { validateRegistration, validateLogin } from "./modules/userHandling.js";
 
 import { showLocation } from "./modules/location.js";
 import { showOrderHistory } from "./modules/orderHistory.js";
+import { logoutUser } from "./modules/userHandling.js";
+
+if (!window.location.pathname.includes("/pages/bestallning.html") ) {
+    logoutUser();
+    showNavigation();
+}
 
 
 

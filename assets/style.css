@@ -50,9 +50,11 @@ body {
         cursor: pointer;
     }
 
+    .cart-container {
+        justify-self: end;
+    }
     .fa-cart-shopping {
         grid-column: 3;
-        justify-self: end;
         font-size: 2rem;
         padding-right: 0.5rem;
     }
@@ -318,8 +320,8 @@ body {
 .order-page {
     grid-template-rows: auto;
     .logo {
-        width: 8rem;
-        height: 8rem;
+        width: 5rem;
+        height: 5rem;
         grid-row: 1;
         align-self: center;
     }
