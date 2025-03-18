@@ -6,20 +6,29 @@ export async function validateRegistration(name, email, password) {
     // Regex för email
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
-        return { success: false, message: "Ogiltig e-postadress. Kontrollera formatet." };
+        return {
+            success: false,
+            message: "Ogiltig e-postadress. Kontrollera formatet.",
+        };
     }
 
     // Hämta användare
     const usersData = await getUsers();
     if (!usersData || !Array.isArray(usersData.users)) {
-        return { success: false, message: "Kunde inte hämta användare, försök igen senare." };
+        return {
+            success: false,
+            message: "Kunde inte hämta användare, försök igen senare.",
+        };
     }
 
     const users = usersData.users; // Hämtar arrayen från ovanstående
 
     // Används email redan?
-    if (users.some(user => user.email === email)) {
-        return { success: false, message: "E-postadressen är redan registrerad." };
+    if (users.some((user) => user.email === email)) {
+        return {
+            success: false,
+            message: "E-postadressen är redan registrerad.",
+        };
     }
 
     // Inte tomt i namn och lösenord
@@ -32,7 +41,7 @@ export async function validateRegistration(name, email, password) {
 
     // Kollar så ovanstående är en array
     if (!Array.isArray(storedUsers)) {
-        storedUsers = [];  // Skapar en tom array annars
+        storedUsers = []; // Skapar en tom array annars
     }
 
     // Sparar ny användare lokalt då vi inte kan skriva till Jespers API
@@ -44,7 +53,10 @@ export async function validateRegistration(name, email, password) {
     // Sparar i local storage
     localStorage.setItem("users", JSON.stringify(storedUsers));
 
-    return { success: true, message: "Registrering lyckades! Du kan nu logga in." };
+    return {
+        success: true,
+        message: "Registrering lyckades! Du kan nu logga in.",
+    };
 }
 
 // Login
@@ -72,23 +84,34 @@ export async function validateLogin(emailOrUsername, password) {
     // Kan vi hämta data och är det an array?
     if (!apiUsers || !Array.isArray(apiUsers.users)) {
         console.error("Error fetching API users or invalid format");
-        return { success: false, message: "Kunde inte hämta användare, försök igen senare." };
+        return {
+            success: false,
+            message: "Kunde inte hämta användare, försök igen senare.",
+        };
     }
 
     const users = [...localUsers, ...apiUsers.users]; // Kombinera localStorage och API
 
     // Användarcheck?
     if (users.length === 0) {
-        return { success: false, message: "Kunde inte hämta användare, försök igen senare." };
+        return {
+            success: false,
+            message: "Kunde inte hämta användare, försök igen senare.",
+        };
     }
 
-    const user = users.find(user =>
-        (user.email && user.email === emailOrUsername) ||
-        (user.username && user.username === emailOrUsername)
+    const user = users.find(
+        (user) =>
+            (user.email && user.email === emailOrUsername) ||
+            (user.username && user.username === emailOrUsername)
     );
 
     if (!user) {
-        return { success: false, message: "Ingen användare hittades med den e-postadressen eller användarnamnet." };
+        return {
+            success: false,
+            message:
+                "Ingen användare hittades med den e-postadressen eller användarnamnet.",
+        };
     }
 
     // Lösenordscheck
@@ -101,7 +124,6 @@ export async function validateLogin(emailOrUsername, password) {
 
     return { success: true, message: "Inloggning lyckades!" };
 }
-
 
 // Eventlyssnare
 document.addEventListener("DOMContentLoaded", () => {
@@ -126,33 +148,36 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // Hanterar login
-	const loginForm = document.querySelector(".login-form");
-if (loginForm) {
-    loginForm.addEventListener("submit", async (event) => {
-        event.preventDefault();
+    const loginForm = document.querySelector(".login-form");
+    if (loginForm) {
+        loginForm.addEventListener("submit", async (event) => {
+            event.preventDefault();
 
-        const usernameOrEmail = document.getElementById("email").value.trim();
-        const password = document.getElementById("password").value.trim();
+            const usernameOrEmail = document
+                .getElementById("email")
+                .value.trim();
+            const password = document.getElementById("password").value.trim();
 
-        // Validera
-        const result = await validateLogin(usernameOrEmail, password);
+            // Validera
+            const result = await validateLogin(usernameOrEmail, password);
 
-        // Visar resultat om OK
-        showMessage(result.message, result.success);
+            // Visar resultat om OK
+            showMessage(result.message, result.success);
 
-        if (result.success) {
-            alert("Inloggning lyckades!");
-            window.location.href = "meny.html";
-        }
-    });
-}
+            if (result.success) {
+                alert("Inloggning lyckades!");
+                window.location.href = "meny.html";
+            }
+        });
+    }
     // Används senare, för att visa rätt meny i inloggat/urloggat läge
     // checkUserStatus();
 });
 
 // Tempfunktion för att visa
 function showMessage(message, isSuccess) {
-    const messageBox = document.getElementById("messageBox") || createMessageBox();
+    const messageBox =
+        document.getElementById("messageBox") || createMessageBox();
     messageBox.textContent = message;
     messageBox.style.color = isSuccess ? "green" : "red";
 }
@@ -183,4 +208,17 @@ function logoutUser() {
     localStorage.removeItem("loggedInUser");
     alert("Du har loggats ut!");
     window.location.href = "index.html"; // Redirect to homepage
+}
+
+export function saveOrderHistory(order) {
+    const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+    if (!loggedInUser) return;
+
+    let orderHistory = JSON.parse(localStorage.getItem("orderHistory")) || {};
+    if (!orderHistory[loggedInUser.email]) {
+        orderHistory[loggedInUser.email] = [];
+    }
+
+    orderHistory[loggedInUser.email].push(order);
+    localStorage.setItem("orderHistory", JSON.stringify(orderHistory));
 }
