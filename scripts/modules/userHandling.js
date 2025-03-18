@@ -147,7 +147,7 @@ if (loginForm) {
     });
 }
     // Används senare, för att visa rätt meny i inloggat/urloggat läge
-    // checkUserStatus();
+    checkUserStatus();
 });
 
 // Tempfunktion för att visa
@@ -166,21 +166,28 @@ function createMessageBox() {
 }
 
 // Används senare
-/* function checkUserStatus() {
+    function checkUserStatus() {
     const user = JSON.parse(localStorage.getItem("loggedInUser"));
 
     if (user) {
-        document.querySelector(".login-menu").style.display = "none"; //
-        document.querySelector(".user-menu").style.display = "block"; //
-    } else {
         document.querySelector(".login-menu").style.display = "block";
         document.querySelector(".user-menu").style.display = "none";
+    } else {
+        document.querySelector(".login-menu").style.display = "none";
+        document.querySelector(".user-menu").style.display = "block";
     }
-} */
-
-// Logga ut, används ej just nu
-function logoutUser() {
-    localStorage.removeItem("loggedInUser");
-    alert("Du har loggats ut!");
-    window.location.href = "index.html"; // Redirect to homepage
 }
+
+
+function logoutUser() {
+    const logoutLink = document.querySelector('.log-out');
+    logoutLink.addEventListener('click', (event) => {
+        event.preventDefault();
+        localStorage.removeItem("loggedInUser");
+        alert("Du har loggats ut!");
+        window.location.href = "/index.html";
+    });
+}
+
+
+logoutUser();
