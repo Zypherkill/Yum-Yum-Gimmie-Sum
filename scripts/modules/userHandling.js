@@ -171,7 +171,9 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
     // Används senare, för att visa rätt meny i inloggat/urloggat läge
-    checkUserStatus();
+    if (!window.location.pathname.includes("/pages/bestallning.html") ) {
+        checkUserStatus();
+    }
 });
 
 // Tempfunktion för att visa
@@ -204,7 +206,7 @@ function createMessageBox() {
 }
 
 
-function logoutUser() {
+export function logoutUser() {
     const logoutLink = document.querySelector('.log-out');
     logoutLink.addEventListener('click', (event) => {
         event.preventDefault();
@@ -214,9 +216,6 @@ function logoutUser() {
     });
 }
 
-
-
-logoutUser();
 
 export function saveOrderHistory(order) {
     const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
