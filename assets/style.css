@@ -49,9 +49,11 @@ body {
         cursor: pointer;
     }
 
+    .cart-container {
+        justify-self: end;
+    }
     .fa-cart-shopping {
         grid-column: 3;
-        justify-self: end;
         font-size: 2rem;
         padding-right: 0.5rem;
     }
