@@ -10,13 +10,14 @@ export function showOrderHistory() {
     const userOrders = orderHistory[loggedInUser.email] || [];
 
     const historyContainer = document.querySelector(".history-container");
+    const orderNumber = generateOrderNumber();
     historyContainer.innerHTML =
         userOrders.length > 0
             ? userOrders
-                  .map(
-                      (order) => `
+                .map(
+                    (order) => `
             <div class="order">
-                <h2>Order: ${order.id}</h2>
+                <h2>Order: ${orderNumber}</h2>
                 <ul>
                     ${order
                         .map(
@@ -31,7 +32,19 @@ export function showOrderHistory() {
                 )} sek</p>
             </div>
         `
-                  )
-                  .join("")
+                )
+                .join("")
             : "<p>Du har inga tidigare ordrar.</p>";
+}
+
+export function generateOrderNumber() {
+    const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    let orderNumber = "Ordernummer: #";
+    
+    for (let i = 0; i < 6; i++) {
+        let randomIndex = Math.floor(Math.random() * characters.length);
+        orderNumber += characters.charAt(randomIndex);
+    }
+    
+    return orderNumber;
 }
