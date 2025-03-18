@@ -1,3 +1,5 @@
+import { saveOrderHistory } from "./userHandling.js";
+
 function displayETA(eta) {
     let formattedETA = formatTime(eta);
 
@@ -25,8 +27,6 @@ function displayETA(eta) {
     document.querySelector(".content-wrapper").appendChild(article);
 }
 
-// updatera display ETA till = (eta, dish)  `Dina ${dish} är klar om ${formattedETA} minuter.`;
-
 function getRandomTime(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
@@ -34,8 +34,14 @@ function getRandomTime(min, max) {
 export function placeOrder() {
     let eta = getRandomTime(15, 30);
     displayETA(eta);
+
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    if (cart.length > 0) {
+        saveOrderHistory(cart);
+        localStorage.setItem("lastOrder", JSON.stringify(cart)); // Save the order for receipt display
+        localStorage.removeItem("cart"); // Clear the cart after placing the order
+    }
 }
-// updatera placeOrder med = (dish) och displayETA(eta, dish)
 
 function formatTime(time) {
     let minutes = time % 60;

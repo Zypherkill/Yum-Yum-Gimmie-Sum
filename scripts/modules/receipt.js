@@ -1,7 +1,9 @@
 // Funktion för att hämta beställningsinformation från local storage
+import { saveOrderHistory } from "./userHandling.js";
+
 export function getOrderFromLocalStorage() {
-    const cart = localStorage.getItem("cart");
-    return cart ? JSON.parse(cart) : null;
+    const lastOrder = localStorage.getItem("lastOrder");
+    return lastOrder ? JSON.parse(lastOrder) : null;
 }
 
 // Funktion för att visa kvittot
@@ -53,7 +55,8 @@ if (window.location.pathname.includes("bestallning.html")) {
 
     // Lägger till lyssnare på knappen för att göra en ny beställning
     document.querySelector("#new-order").addEventListener("click", () => {
-        localStorage.removeItem("cart"); // Rensa local storage
+        localStorage.removeItem("cart"); // Rensa cart i local storage
+        localStorage.removeItem("lastOrder"); // Rensa lastOrder
         window.location.href = "meny.html"; // Navigera till menynsidan
     });
 }
