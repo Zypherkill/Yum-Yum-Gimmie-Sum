@@ -159,22 +159,22 @@ body {
 
     h2 {
         grid-row: 4;
-        font-size: 2rem; /* // ändrade fontsize */
+        font-size: 2.5rem;
         max-height: 2rem;
         text-align: center;
     }
 
     h3 {
         grid-row: 5;
-        font-size: 1.2rem; /* // ändrade fontsize */
+        font-size: 1.5rem;
         max-height: 2rem;
         text-align: center;
         width: 50%;
     }
 
     img {
-        width: 45%; /* ändrade storlek till 45 ist för 60 */
-        height: auto; /* Ändrade från 75% till auto för att få rätt mått på mindre skärmar */
+        width: 60%;
+        height: 75%;
         grid-row: 3;
         align-self: center;
     }
@@ -215,7 +215,6 @@ body {
 }
 
 .about-us {
-    text-align: center; /* la till text align center */
     padding: 1rem;
     overflow-y: scroll;
     gap: 1.5rem;
@@ -230,8 +229,7 @@ body {
     img {
         width: 100%;
         height: 100%;
-        border-radius: 1rem;  /* Tog bort padding-bottom och la till border och border radius */
-        border: 1px solid black;
+        padding-bottom: 1rem;
     }
     .menu-items::-webkit-scrollbar {
         width: 3px;
@@ -526,7 +524,7 @@ button {
 }
 
 .login-wrapper {
-    grid-template-rows: 7rem 1fr 15rem; /* ändrade till 7 rem ist för 10 , så formet inte placeras för långt ner */
+    grid-template-rows: 10rem 1fr 15rem;
 
     .login-title {
         align-self: start;
@@ -573,7 +571,6 @@ button {
     padding: 1rem;
     border: none;
     border-radius: 30px;
-    margin-top: 1rem; /* La till 1 rem margin-top så knappen placeras bättre */
 }
 
 input {
