@@ -1,18 +1,43 @@
 <!DOCTYPE html>
 <html lang="sv">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="../assets/style.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-	<script type="module" src="../scripts/main.js"></script>
-	<title>Yum Yum Gimme Sum - Meny</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script type="module" src="../scripts/main.js"></script>
+    <title>Yum Yum Gimme Sum - Meny</title>
 </head>
 <body>
-	<header class="header">
-		<section class="hamburger-menu">
-            <hr class="header__lines"><hr class="header__lines"><hr class="header__lines">
+    <header class="header" role="banner">
+        <section class="hamburger-menu" aria-label="Öppna meny">
+            <hr class="header__lines" aria-hidden="true">
+            <hr class="header__lines" aria-hidden="true">
+            <hr class="header__lines" aria-hidden="true">
         </section>
+        <a href="../index.html" aria-label="Gå till startsidan">
+            <img src="../assets/images/white icon.png" alt="White logo of Yum Yum Gimme Sum" class="logo">
+        </a>
+        <div class="cart-container" role="complementary" aria-label="Varukorg">
+            <i class="fa-solid fa-cart-shopping cart-icon" style="color: #ffffff;">
+                <span id="cart-text" class="cart-text hidden" aria-live="polite">0</span>
+            </i>
+            <span id="cart-dropdown" class="cart-dropdown hidden" aria-live="polite"></span>
+        </div>
+
+        <nav class="navigation user-menu" aria-label="Navigering för användare">
+            <section class="nav-top">
+                <img src="../assets/images/white icon.png" alt="White logo of Yum Yum Gimme Sum" class="logo">
+                <i class="fa-solid fa-xmark" style="color: #ffffff;" aria-label="Stäng meny"></i>
+            </section>
+            <section class="list-item">
+                <a href="./login.html" aria-label="Logga in eller registrera dig">LOGGA IN/REGISTRERA DIG</a>
+                <a href="./meny.html" aria-label="Se meny">SE MENY</a>
+                <a href="./om_oss.html" aria-label="Om oss">OM OSS</a>
+                <a href="./location.html" aria-label="Hitta oss">HITTA OSS</a>
+            </section>
+        </nav>
+
 		<a href="../index.html"> <img src="../assets/images/white icon.png" alt="White logo of Yum Yum Gimme Sum" class="logo"> </a>
 		<div class="cart-container">
 			<i class="fa-solid fa-cart-shopping cart-icon" style="color: #ffffff;">
@@ -54,13 +79,31 @@
 	</header>
 	<div class="menu-wrapper">
 
-    </div>
-	<div id="cart-modal" class="cart-modal hidden">
-		<div class="cart-modal-content">
-			<span class="close-modal">&times;</span>
-			<div id="cart"></div>
-		</div>
-	</div>
+        <nav class="navigation login-menu" aria-label="Navigering för inloggade användare">
+            <section class="nav-top">
+                <img src="../assets/images/white icon.png" alt="White logo of Yum Yum Gimme Sum" class="logo">
+                <i class="fa-solid fa-xmark" style="color: #ffffff;" aria-label="Stäng meny"></i>
+            </section>
+            <section class="list-item">
+                <a href="#" aria-label="Min profil">MIN PROFIL</a>
+                <a href="#" aria-label="Historik">HISTORIK</a>
+                <a href="./meny.html" aria-label="Se meny">SE MENY</a>
+                <a href="./om_oss.html" aria-label="Om oss">OM OSS</a>
+                <a href="./location.html" aria-label="Hitta oss">HITTA OSS</a>
+                <a class="log-out" href="../index.html" aria-label="Logga ut">LOGGA UT</a>
+            </section>
+        </nav>
+    </header>
 
+    <section class="menu-wrapper" aria-label="Menysektion">
+        
+    </section>
+
+    <section id="cart-modal" class="cart-modal hidden" role="dialog" aria-labelledby="cart-modal-title" aria-hidden="true">
+        <div class="cart-modal-content">
+            <span class="close-modal" aria-label="Stäng varukorg">&times;</span>
+            <div id="cart" aria-live="polite"></div>
+        </div>
+    </section>
 </body>
 </html>
