@@ -10,7 +10,8 @@ export function showNavigation() {
     const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
 
     if (loggedInUser && loggedInUser.role === 'admin') {
-        adminPanelBtn.style.display = 'block'; // Show button if user is admin
+        // Show button if user is admin
+        adminPanelBtn.style.display = 'block'; 
         adminPanelBtn.addEventListener('click', () => {
             window.location.href = 'adminPanel.html';
         });
