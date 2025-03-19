@@ -6,18 +6,16 @@ export function showNavigation() {
     const menuWrapper = document.querySelector('.menu-wrapper');
     const adminPanelBtn = document.querySelector('#adminPanelBtn'); // Ensure this targets the correct button
 
-    // Get the logged-in user from localStorage
+ if (adminPanelBtn) {
     const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
 
-    // Check if the logged-in user exists and is an admin
     if (loggedInUser && loggedInUser.role === 'admin') {
-        // If the user is an admin, show the admin panel button
-        adminPanelBtn.style.display = 'block'; // Show the admin panel button
+        adminPanelBtn.style.display = 'block'; // Show button if user is admin
         adminPanelBtn.addEventListener('click', () => {
-            window.location.href = 'adminPanel.html'; // Redirect to the admin panel page
+            window.location.href = 'adminPanel.html';
         });
     }
-
+}
     // Hamburger menu functionality
     hamburgerMenu.addEventListener('click', () => {
         slideMenu.forEach(menu => {
