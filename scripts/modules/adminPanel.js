@@ -126,7 +126,7 @@ function adminShowOrderHistory(ordersTableBody) {
     renderOrders(orderHistory, ordersTableBody);
 }
 
-// Function to filter orders by status
+// Function to filter orders by statusx 
 function filterOrdersByStatus(status, ordersTableBody) {
     const orderHistory = JSON.parse(localStorage.getItem("orderHistory")) || [];
     const filteredOrders = status === "All" ? orderHistory : orderHistory.filter(order => order.status === status);
@@ -136,7 +136,8 @@ function filterOrdersByStatus(status, ordersTableBody) {
 export async function showAdminPanel() {
     document.addEventListener("DOMContentLoaded", async function () {
         const userData = await getUsers();
-        const apiUsers = userData?.users ?? []; // Users from API
+         // Users from API response
+        const apiUsers = userData?.users ?? [];
 
         // Fetch users from localStorage
         let storedUsers = JSON.parse(localStorage.getItem("users")) || [];
