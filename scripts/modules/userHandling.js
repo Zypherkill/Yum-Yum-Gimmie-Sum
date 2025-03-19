@@ -208,6 +208,8 @@ function createMessageBox() {
 
 export function logoutUser() {
     const logoutLink = document.querySelector('.log-out');
+    if (!logoutLink) return; // Avbryt om elementet inte finns
+
     logoutLink.addEventListener('click', (event) => {
         event.preventDefault();
         localStorage.removeItem("loggedInUser");
@@ -216,6 +218,8 @@ export function logoutUser() {
     });
 }
 
+
+logoutUser();
 
 export function saveOrderHistory(order) {
     const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
@@ -228,5 +232,59 @@ export function saveOrderHistory(order) {
 
     orderHistory[loggedInUser.email].push(order);
     localStorage.setItem("orderHistory", JSON.stringify(orderHistory));
+}
+
+// Hämta och uppdatera profilinformation
+export function displayUserProfile() {
+    const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+    if (!loggedInUser) return;
+
+    // Skicka in värdena från den inloggade användaren
+    document.querySelector(".profile-name").value = loggedInUser.username || "";
+    document.querySelector(".profile-email").value = loggedInUser.email || "";
+    document.querySelector(".profile-password").value = loggedInUser.password || "";
+
+    // Hantera profilbild
+    if (loggedInUser.profile_image) {
+        document.querySelector(".profile-image").src = loggedInUser.profile_image;
+    }
+}
+
+export function updateUserProfile() {
+    const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+    if (!loggedInUser) return;
+
+    // Hämta uppdaterade värden
+    const newName = document.querySelector(".profile-name").value.trim();
+    const newEmail = document.querySelector(".profile-email").value.trim();
+    const newPassword = document.querySelector(".profile-password").value.trim();
+    const profileImageInput = document.querySelector(".profile-image-upload");
+
+    // Basic inputvalidering
+    if (!newName || !newEmail || !newPassword) {
+        alert("Alla fält måste fyllas i.");
+        return;
+    }
+
+    loggedInUser.username = newName;
+    loggedInUser.email = newEmail;
+    loggedInUser.password = newPassword;
+
+    // Ladda upp bilder
+    if (profileImageInput.files.length > 0) {
+        const file = profileImageInput.files[0];
+        const reader = new FileReader();
+        reader.onload = function (event) {
+            loggedInUser.profile_image = event.target.result;
+            localStorage.setItem("loggedInUser", JSON.stringify(loggedInUser));
+            alert("Profil uppdaterad!");
+            displayUserProfile(); // Uppdatera sidan
+        };
+        reader.readAsDataURL(file);
+    } else {
+        localStorage.setItem("loggedInUser", JSON.stringify(loggedInUser));
+        alert("Profil uppdaterad!");
+        displayUserProfile();
+    }
 }
 
