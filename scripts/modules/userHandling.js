@@ -214,7 +214,7 @@ export function logoutUser() {
         event.preventDefault();
         localStorage.removeItem("loggedInUser");
         alert("Du har loggats ut!");
-        window.location.href = "../index.html";
+        window.location.href = "/index.html";
     });
 }
 
