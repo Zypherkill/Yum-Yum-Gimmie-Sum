@@ -2,7 +2,7 @@ import { showMenu } from "./modules/menu.js";
 import { placeOrder } from "./modules/delivery.js";
 import { showNavigation } from "../utils/hamburgermenu.js";
 import { displayReceipt } from "./modules/receipt.js";
-import { validateRegistration, validateLogin } from "./modules/userHandling.js";
+import { validateRegistration, validateLogin, displayUserProfile, updateUserProfile } from "./modules/userHandling.js";
 import { showLocation } from "./modules/location.js";
 import { showOrderHistory } from "./modules/orderHistory.js";
 import { logoutUser } from "./modules/userHandling.js";
@@ -32,4 +32,10 @@ if (window.location.pathname.includes("/pages/location.html")) {
 }
 if (window.location.pathname.includes("/pages/orderhistorik.html")) {
     showOrderHistory();
+}
+if (window.location.pathname.includes("/pages/profil.html")) {
+    displayUserProfile();
+    document.querySelector(".update-profile-btn").addEventListener("click", () => {
+        updateUserProfile();
+    });
 }
