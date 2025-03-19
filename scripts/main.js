@@ -51,4 +51,8 @@ if (window.location.pathname.includes("/pages/profil.html")) {
     });
  
 }}
+
+
+
 showNavigation(); 
+
