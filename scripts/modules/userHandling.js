@@ -254,7 +254,7 @@ export function updateUserProfile() {
     const newName = document.querySelector(".profile-name").value.trim();
     const newEmail = document.querySelector(".profile-email").value.trim();
     const newPassword = document.querySelector(".profile-password").value.trim();
-    const profileImageInput = document.querySelector(".profile-image-upload");
+    const profileImageInput = document.querySelector("#profile-image-upload");
 
     // Basic inputvalidering
     if (!newName || !newEmail || !newPassword) {
