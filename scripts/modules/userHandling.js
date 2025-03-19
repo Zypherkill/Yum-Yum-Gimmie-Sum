@@ -248,6 +248,9 @@ export function displayUserProfile() {
     if (loggedInUser.profile_image) {
         document.querySelector(".profile-image").src = loggedInUser.profile_image;
     }
+    else {
+        console.error("Picture not found in local storage");
+    }
 }
 
 export function updateUserProfile() {
