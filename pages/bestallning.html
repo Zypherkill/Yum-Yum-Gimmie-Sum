@@ -9,31 +9,33 @@
     </head>
 
     <body>
-        <div class="content-wrapper order-page">
+        <section class="content-wrapper order-page">
             <a href="../index.html">
                 <img
                     src="../assets/images/white icon.png"
-                    alt="White logo of Yum Yum Gimme Sum"
+                    alt="Vit logotyp för Yum Yum Gimme Sum"
                     class="logo"
                 />
             </a>
 
-            <button id="new-order" class="button button--top">
+            <button id="new-order" class="button button--top" role="button" aria-label="Starta en ny beställning">
                 GÖR NY BESTÄLLNING
             </button>
-            <button id="receipt-button" class="button button--bottom">
+            <button id="receipt-button" class="button button--bottom" role="button" aria-controls="receipt-overlay" aria-label="Visa kvitto">
                 SE KVITTO
             </button>
-            <div>
-                <div id="receipt-overlay" class="overlay">
-                    <div class="overlay-content">
-                        <span id="close-overlay" class="close-button"
-                            >&times;</span
-                        >
-                        <div class="receipt-container"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
+
+            <section>
+                <dialog id="receipt-overlay" class="overlay" aria-labelledby="receipt-heading" aria-hidden="true">
+                    <article class="overlay-content">
+                        <button id="close-overlay" class="close-button" aria-label="Stäng kvittofönstret">
+                            &times;
+                        </button>
+                        <h2 id="receipt-heading">Ditt kvitto</h2>
+                        <section class="receipt-container"></section>
+                    </article>
+                </dialog>
+            </section>
+        </section>
     </body>
 </html>

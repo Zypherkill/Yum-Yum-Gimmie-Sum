@@ -9,12 +9,12 @@
     <title>Yum Yum Gimme Sum - Logga In</title>
 </head>
 <body>
-    <header class="header">
+    <header class="header" role="banner">
         <section class="hamburger-menu">
             <hr class="header__lines"><hr class="header__lines"><hr class="header__lines">
         </section>
         <a href="../index.html"> <img src="../assets/images/white icon.png" alt="White logo of Yum Yum Gimme Sum" class="logo"> </a>
-        <nav class="navigation user-menu">
+        <nav class="navigation user-menu"id="user-menu" aria-label="Navigering för användare">
 			<section class="nav-top">
 				<img src="../assets/images/white icon.png" alt="White logo of Yum Yum Gimme Sum" class="logo">
 				<i class="fa-solid fa-xmark" style="color: #ffffff;"></i>
@@ -27,7 +27,7 @@
 			</section>
 		</nav>
 
-		<nav class="navigation login-menu">
+		<nav class="navigation login-menu" aria-label="Navigering för inloggade användare">
 			<section class="nav-top">
 				<img src="../assets/images/white icon.png" alt="White logo of Yum Yum Gimme Sum" class="logo">
 				<i class="fa-solid fa-xmark" style="color: #ffffff;"></i>
@@ -42,22 +42,25 @@
 			</section>
 		</nav>
     </header>
-    <div class="content-wrapper login-wrapper">
-        <h1 class="login-title">LOGGA IN</h1>
-        <form class="login-form" aria-labelledby="login-title">
-			<h2 class="form-title">Välkommen till Yum Yum Gimme Sum!</h2>
+	<section class="content-wrapper login-wrapper">
+        <h1 id="login-title" class="login-title">Logga in</h1>
+        <form class="login-form" aria-labelledby="login-title" method="POST" action="#">
+            <h2 class="form-title">Välkommen till Yum Yum Gimme Sum!</h2>
 
-			<p class="login-text" >Logga in nedan för att se din orderhistorik.</p>
+            <p class="login-text">Logga in nedan för att se din orderhistorik.</p>
+            
             <label for="email">E-post eller användarnamn:</label>
-            <input type="text" id="email" name="email" required>
+            <input type="text" id="email" name="email" required aria-required="true" aria-describedby="email-help">
+            
 
             <label for="password">Lösenord:</label>
-            <input type="password" id="password" name="password" required>
-            <p class="account" >Inget konto? <a href="register.html">Skapa ett här</a></p>
+            <input type="password" id="password" name="password" required aria-required="true" aria-describedby="password-help">
+           
 
-            <button class="login-button" type="submit">Logga in</button>
+            <p class="account">Inget konto? <a href="register.html" aria-label="Skapa ett nytt konto">Skapa ett här</a></p>
+
+            <button class="login-button" type="submit" aria-label="Logga in">Logga in</button>
         </form>
-
-    </div>
+	</section>
 </body>
 </html>

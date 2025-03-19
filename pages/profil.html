@@ -9,65 +9,63 @@
 	<title>Yum Yum Gimme Sum - Profil</title>
 </head>
 <body>
-	<header class="header">
-		<section class="hamburger-menu">
-            <hr class="header__lines"><hr class="header__lines"><hr class="header__lines">
+	<header class="header" role="banner">
+		<section class="hamburger-menu" aria-label="Huvudmeny">
+            <hr class="header__lines" aria-hidden="true">
+            <hr class="header__lines" aria-hidden="true">
+            <hr class="header__lines" aria-hidden="true">
         </section>
-		<a href="../index.html"> <img src="../assets/images/white icon.png" alt="White logo of Yum Yum Gimme Sum" class="logo"> </a>
-		<nav class="navigation user-menu">
+		<a href="../index.html" aria-label="Gå till startsidan">
+			<img src="../assets/images/white icon.png" alt="White logo of Yum Yum Gimme Sum" class="logo">
+		</a>
+		<nav class="navigation user-menu" aria-label="Navigering för inloggade användare">
 			<section class="nav-top">
 				<img src="../assets/images/white icon.png" alt="White logo of Yum Yum Gimme Sum" class="logo">
-				<i class="fa-solid fa-xmark" style="color: #ffffff;"></i>
+				<i class="fa-solid fa-xmark" style="color: #ffffff;" role="button" aria-label="Stäng meny"></i>
 			</section>
 			<section class="list-item">
-				<a href="./login.html">LOGGA IN/REGISTRERA DIG</a>
-				<a href="./meny.html">SE MENY</a>
-				<a href="./om_oss.html">OM OSS</a>
-				<a href="./location.html">HITTA OSS</a>
+				<a href="./login.html" aria-label="Logga in eller registrera dig">LOGGA IN/REGISTRERA DIG</a>
+				<a href="./meny.html" aria-label="Visa meny">SE MENY</a>
+				<a href="./om_oss.html" aria-label="Läs om oss">OM OSS</a>
+				<a href="./location.html" aria-label="Hitta oss">HITTA OSS</a>
 			</section>
 		</nav>
 
-		<nav class="navigation login-menu">
+		<nav class="navigation login-menu" aria-label="Navigering för användare som är inloggade">
 			<section class="nav-top">
 				<img src="../assets/images/white icon.png" alt="White logo of Yum Yum Gimme Sum" class="logo">
-				<i class="fa-solid fa-xmark" style="color: #ffffff;"></i>
+				<i class="fa-solid fa-xmark" style="color: #ffffff;" role="button" aria-label="Stäng meny"></i>
 			</section>
 			<section class="list-item">
-				<a href="./profil.html">MIN PROFIL</a>
-				<a href="./orderhistorik.html">HISTORIK</a>
-				<a href="./meny.html">SE MENY</a>
-				<a href="./om_oss.html">OM OSS</a>
-				<a href="./location.html">HITTA OSS</a>
-				<a class="log-out">LOGGA UT</a>
+				<a href="./profil.html" aria-label="Visa min profil">MIN PROFIL</a>
+				<a href="./orderhistorik.html" aria-label="Visa orderhistorik">HISTORIK</a>
+				<a href="./meny.html" aria-label="Se meny">SE MENY</a>
+				<a href="./om_oss.html" aria-label="Läs om oss">OM OSS</a>
+				<a href="./location.html" aria-label="Hitta oss">HITTA OSS</a>
+				<a class="log-out" href="#" aria-label="Logga ut">LOGGA UT</a>
 			</section>
 		</nav>
 	</header>
-	<div class="content-wrapper">
+	<div class="content-wrapper" role="main">
 		<section class="user-profile">
-			<h1 class="user-title">Min Profil</h1>
-			<img class="profile-image" src="" alt="Profilbild" width="100">
-			<label for="profile-image-upload" class="custom-file-upload">Välj profilbild</label>
-			<input type="file" id="profile-image-upload">
-			<label>Namn:</label>
-			<input type="text" class="profile-name">
-
-			<label>Email:</label>
-			<input type="email" class="profile-email">
-
-			<label>Lösenord:</label>
-			<input type="password" class="profile-password">
-
-			<button class="update-profile-btn">Uppdatera profil</button>
+			<h1 class="user-title" id="profile-heading">Min Profil</h1>
+			<img class="profile-image" src="" alt="Profilbild" width="100" aria-labelledby="profile-heading">
+			<label for="profile-image-upload" class="custom-file-upload" aria-label="Ladda upp profilbild">Välj profilbild</label>
+			<input type="file" id="profile-image-upload" aria-describedby="profile-image-upload-description">
+			<label for="profile-name">Namn:</label>
+			<input type="text" class="profile-name" id="profile-name" aria-describedby="name-description">
+			<label for="profile-email">Email:</label>
+			<input type="email" class="profile-email" id="profile-email" aria-describedby="email-description">
+			<label for="profile-password">Lösenord:</label>
+			<input type="password" class="profile-password" id="profile-password" aria-describedby="password-description">
+			<button class="update-profile-btn" aria-label="Uppdatera profil">Uppdatera profil</button>
 		</section>
+	</div>
 
-
-    </div>
-
-
-	<div id="cart-modal" class="cart-modal hidden">
+	<div id="cart-modal" class="cart-modal hidden" role="dialog" aria-labelledby="cart-modal-heading">
 		<div class="cart-modal-content">
-			<span class="close-modal">&times;</span>
-			<div id="cart"></div>
+			<span class="close-modal" role="button" aria-label="Stäng varukorg">&times;</span>
+			<div id="cart" aria-live="polite"></div>
 		</div>
 	</div>
 

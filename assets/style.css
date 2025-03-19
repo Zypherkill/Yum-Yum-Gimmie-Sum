@@ -213,6 +213,11 @@ body {
     border: 1px solid white;
     align-self: start;
 }
+.button--top:hover, .button--bottom:hover {
+    background-color: #238e44;
+}
+
+ 
 
 .about-us {
     text-align: center; /* la till text align center */
@@ -621,7 +626,7 @@ h1{
 
 .user-profile {
     background-color: var(--login-background-color);
-    height: 70%;
+    height: 80%;
     width: 80%;
     display: flex;
     flex-direction: column;
@@ -765,3 +770,6 @@ button:hover, select:hover {
     display: none;
 }
 
+.orderButton:hover{
+    background-color: #238e44;
+}

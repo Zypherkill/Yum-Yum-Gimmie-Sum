@@ -6,63 +6,62 @@
 	<link rel="stylesheet" href="../assets/style.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 	<script type="module" src="../scripts/main.js"></script>
-	
 	<title>Yum Yum Gimme Sum - Om Oss</title>
 </head>
 <body>
-	<header class="header">
-		<section class="hamburger-menu">
-            <hr class="header__lines"><hr class="header__lines"><hr class="header__lines">
+	<header class="header" role="banner">
+		<section class="hamburger-menu" aria-label="Huvudmeny">
+            <hr class="header__lines" aria-hidden="true"><hr class="header__lines" aria-hidden="true"><hr class="header__lines" aria-hidden="true">
         </section>
-		<a href="../index.html"> <img src="../assets/images/white icon.png" alt="White logo of Yum Yum Gimme Sum" class="logo"> </a>
-		<div class="cart-container">
-			<i class="fa-solid fa-cart-shopping cart-icon" style="color: #ffffff;">
-				<span id="cart-text" class="cart-text hidden">0</span>
+		<a href="../index.html" aria-label="Gå till startsidan"> <img src="../assets/images/white icon.png" alt="White logo of Yum Yum Gimme Sum" class="logo"> </a>
+		<div class="cart-container" role="region" aria-labelledby="cart-text">
+			<i class="fa-solid fa-cart-shopping cart-icon" style="color: #ffffff;" aria-hidden="true">
+				<span id="cart-text" class="cart-text hidden" aria-live="polite">0</span>
 			</i>
-			<span id="cart-dropdown" class="cart-dropdown hidden"></span>
+			<span id="cart-dropdown" class="cart-dropdown hidden" role="status" aria-live="polite"></span>
 		</div>
 
-		<nav class="navigation user-menu">
+		<nav class="navigation user-menu" aria-label="Navigering för icke-inloggade användare">
 			<section class="nav-top">
 				<img src="../assets/images/white icon.png" alt="White logo of Yum Yum Gimme Sum" class="logo">
-				<i class="fa-solid fa-xmark" style="color: #ffffff;"></i>
+				<i class="fa-solid fa-xmark" style="color: #ffffff;" role="button" aria-label="Stäng meny"></i>
 			</section>
 			<section class="list-item">
-				<a href="./login.html">LOGGA IN/REGISTRERA DIG</a>
-				<a href="./meny.html">SE MENY</a>
-				<a href="./om_oss.html">OM OSS</a>
-				<a href="./location.html">HITTA OSS</a>
+				<a href="./login.html" aria-label="Logga in eller registrera dig">LOGGA IN/REGISTRERA DIG</a>
+				<a href="./meny.html" aria-label="Se meny">SE MENY</a>
+				<a href="./om_oss.html" aria-label="Läs om oss">OM OSS</a>
+				<a href="./location.html" aria-label="Hitta oss">HITTA OSS</a>
 			</section>
 		</nav>
 
-		<nav class="navigation login-menu">
+		<nav class="navigation login-menu" aria-label="Navigering för inloggade användare">
 			<section class="nav-top">
 				<img src="../assets/images/white icon.png" alt="White logo of Yum Yum Gimme Sum" class="logo">
-				<i class="fa-solid fa-xmark" style="color: #ffffff;"></i>
+				<i class="fa-solid fa-xmark" style="color: #ffffff;" role="button" aria-label="Stäng meny"></i>
 			</section>
 			<section class="list-item">
-				<a href="./profil.html">MIN PROFIL</a>
-				<a href="./orderhistorik.html">HISTORIK</a>
-				<a href="./meny.html">SE MENY</a>
-				<a href="./om_oss.html">OM OSS</a>
-				<a href="./location.html">HITTA OSS</a>
-				<a class="log-out">LOGGA UT</a>
+				<a href="./profil.html" aria-label="Visa min profil">MIN PROFIL</a>
+				<a href="./orderhistorik.html" aria-label="Visa min orderhistorik">HISTORIK</a>
+				<a href="./meny.html" aria-label="Se meny">SE MENY</a>
+				<a href="./om_oss.html" aria-label="Läs om oss">OM OSS</a>
+				<a href="./location.html" aria-label="Hitta oss">HITTA OSS</a>
+				<a href="../index.html" class="log-out" aria-label="Logga ut">LOGGA UT</a>
 			</section>
 		</nav>
 	</header>
-	<div class="content-wrapper about-us">
-		<h1>Om oss</h1>
+	<main class="content-wrapper about-us">
+		<h1 id="about-us-heading">Om oss</h1> 
 		<p>Välkommen till Yum Yum Gimme Sum – foodtruckkedjan som tar gatumat till en ny dimension! Vi startade med en enkel vision: att skapa oförglömliga smaker som får folk att komma tillbaka för mer. Våra burritos har blivit legendariska, vår ramen har fått människor att gråta av lycka, och våra smash burgers? De har till och med inspirerat Michelin-inspektörer att skriva poesi.</p>
 
 		<p>Allt började som en dröm, i en liten foodtruck fylld med stora smaker och ännu större ambitioner. Vi experimenterade, smakade, och tweakade våra recept tills vi hittade den perfekta kombinationen av hetta, umami och krispighet. Ryktet spred sig snabbt, köerna blev längre, och idag har vi flera trucks som serverar mat till hungriga själar över hela stan.</p>
 
-		<img src="../assets/images/omoss.webp" alt="Bild på en foodtruck med Yum Yum Gimme Sum">
+		<img src="../assets/images/omoss.webp" alt="Bild på en foodtruck med Yum Yum Gimme Sum" role="img" aria-label="Foodtruck med Yum Yum Gimme Sum logo" />
 
 		<p>Men trots att vi vuxit stannar vi aldrig upp. Vi är alltid på jakt efter nya smaker, nya tekniker och nya sätt att fånga den perfekta tuggan. Vår mat är ett möte mellan street food-traditioner från världen och vår egen kreativitet – allt gjort från grunden, med kärlek och ett ständigt sug efter mer.</p>
 
 		<p>Så om du är redo att uppleva något utöver det vanliga – leta efter den rykande heta foodtrucken med vår logga på. Vi lovar, det blir en smakresa du sent kommer att glömma.</p>
 
 		<p>Yum Yum Gimme Sum – för dig som aldrig nöjer dig med mindre än det bästa.</p>
-    <div>
+	</main>
 </body>
 </html>

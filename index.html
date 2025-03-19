@@ -7,13 +7,17 @@
 	<title>Yum Yum Gimme Sum</title>
 </head>
 <body>
-	<div class="content-wrapper landing-page">
-        <h1>VÄLKOMMEN!</h1>
-        <img src="./assets/images/green-logo.png" alt="Bild av logotyp Yum Yum Gimme Sum">
-        <h2>YUM YUM GIMME SUM</h2>
-        <h3>BURGARE, NUDLAR, WONTONS!</h3>
-        <a href="./pages/meny.html" class="button button--top"> <button>SE MENY</button></a>
-        <a href="./pages/location.html" class="button button--bottom"> <button >HITTA OSS</button></a>
-    <div>
+	<div class="content-wrapper landing-page" role="main" aria-labelledby="welcome-title">
+        <h1 id="welcome-title">VÄLKOMMEN!</h1>
+        <img src="./assets/images/green-logo.png" alt="Bild av logotyp Yum Yum Gimme Sum" aria-label="Yum Yum Gimme Sum logotyp">
+        <h2 id="restaurant-name">YUM YUM GIMME SUM</h2>
+        <h3 id="menu-description">BURGARE, NUDLAR, WONTONS!</h3>
+        <a href="./pages/meny.html" class="button button--top" aria-label="Se menyn">
+            <button>SE MENY</button>
+        </a>
+        <a href="./pages/location.html" class="button button--bottom" aria-label="Hitta oss">
+            <button>HITTA OSS</button>
+        </a>
+    </div>
 </body>
 </html>
