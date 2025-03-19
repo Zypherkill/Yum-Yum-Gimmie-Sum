@@ -10,13 +10,13 @@ export function showNavigation() {
     const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
 
     // Check if the logged-in user exists and is an admin
-    if (loggedInUser && loggedInUser.role === 'admin') {
+   /*  if (loggedInUser && loggedInUser.role === 'admin') {
         // If the user is an admin, show the admin panel button
         adminPanelBtn.style.display = 'block'; // Show the admin panel button
         adminPanelBtn.addEventListener('click', () => {
             window.location.href = 'adminPanel.html'; // Redirect to the admin panel page
         });
-    }
+    } */
 
     // Hamburger menu functionality
     hamburgerMenu.addEventListener('click', () => {
