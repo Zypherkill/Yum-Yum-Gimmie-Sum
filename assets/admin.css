@@ -1,5 +1,4 @@
 
-
 /* Search and filter bar */
 .admin-controls {
     display: flex;
@@ -8,6 +7,7 @@
     margin-bottom: 20px;
 }
 
+/* Search input and filter dropdown */
 .admin-controls input, .admin-controls select {
     padding: 10px;
     font-size: 16px;
@@ -22,21 +22,22 @@ table {
     border-collapse: collapse;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    background-color: var(--primary-bg);
-}
+    background-color: white;}
 
+
+/* Table header and data cells */
 th, td {
+
     padding: 12px;
     text-align: center;
     border-bottom: 1px solid #f2f2f2;
 }
-
+/* Green color for the table header */
 th {
-    background-color: #3498db;
+    background-color: #2e8b57; 
     color: white;
     font-weight: 600;
 }
-
 
 
 /* Button and dropdown styling */
@@ -44,10 +45,16 @@ button, select {
     cursor: pointer;
     padding: 8px 12px;
     border: 1px solid #ddd;
-    background-color: #3498db;
+    background-color: #2e8b57; /* Green button */
     color: white;
     border-radius: 5px;
     font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+/* Button and dropdown hover effect */
+button:hover, select:hover {
+    background-color: #238e44; /* Darker green on hover */
 }
 
 /* Hide tables by default */
