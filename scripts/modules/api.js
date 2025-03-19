@@ -28,5 +28,8 @@ export async function getUsers() {
     } catch (error) {
         console.error("Error fetching users:", error);
         return null;
+
+        
     }
+    
 }

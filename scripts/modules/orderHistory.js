@@ -20,16 +20,16 @@ export function showOrderHistory() {
                 <h2>Order: ${orderNumber}</h2>
                 <ul>
                     ${order
-                        .map(
-                            (item) =>
-                                `<li>${item.name} - ${item.quantity} x ${item.price} sek</li>`
-                        )
-                        .join("")}
+                            .map(
+                                (item) =>
+                                    `<li>${item.name} - ${item.quantity} x ${item.price} sek</li>`
+                            )
+                            .join("")}
                 </ul>
                 <p>Totalt: ${order.reduce(
-                    (sum, item) => sum + item.price * item.quantity,
-                    0
-                )} sek</p>
+                                (sum, item) => sum + item.price * item.quantity,
+                                0
+                            )} sek</p>
             </div>
         `
                 )

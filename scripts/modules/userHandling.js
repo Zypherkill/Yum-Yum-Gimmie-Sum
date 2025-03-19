@@ -208,6 +208,8 @@ function createMessageBox() {
 
 export function logoutUser() {
     const logoutLink = document.querySelector('.log-out');
+    if (!logoutLink) return; // Avbryt om elementet inte finns
+
     logoutLink.addEventListener('click', (event) => {
         event.preventDefault();
         localStorage.removeItem("loggedInUser");
@@ -216,6 +218,8 @@ export function logoutUser() {
     });
 }
 
+
+logoutUser();
 
 export function saveOrderHistory(order) {
     const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
