@@ -10,30 +10,30 @@
 
     <body>
         <div class="content-wrapper order-page">
-            <a href="../index.html">
+            <a href="../index.html" aria-label="Gå till startsidan">
                 <img
                     src="../assets/images/white icon.png"
                     alt="White logo of Yum Yum Gimme Sum"
                     class="logo"
+                    role="img" 
                 />
             </a>
 
-            <button id="new-order" class="button button--top" aria-label="Ny order">
+            <button id="new-order" class="button button--top" aria-label="Ny order" aria-live="polite">
                 GÖR NY BESTÄLLNING
             </button>
-            <button id="receipt-button" class="button button--bottom" aria-label="Se kvitto"> <!-- la till aria-label så knapparna -->
+            <button id="receipt-button" class="button button--bottom" aria-label="Se kvitto" aria-live="polite">
                 SE KVITTO
             </button>
-            <div>
-                <div id="receipt-overlay" class="overlay">
+
+            <section>
+                <article id="receipt-overlay" class="overlay" aria-live="assertive" aria-hidden="true">
                     <div class="overlay-content">
-                        <span id="close-overlay" class="close-button"
-                            >&times;</span
-                        >
-                        <div class="receipt-container"></div>
+                        <button id="close-overlay" class="close-button" aria-label="Stäng overlay">&times;</button>
+                        <section class="receipt-container" aria-live="polite"></section>
                     </div>
-                </div>
-            </div>
+                </article>
+            </section>
         </div>
     </body>
 </html>
