@@ -9,59 +9,64 @@
 	<title>Yum Yum Gimme Sum - Registrera</title>
 </head>
 <body>
-	<header class="header">
-		<section class="hamburger-menu">
-			<hr class="header__lines"><hr class="header__lines"><hr class="header__lines">
+	<header class="header" role="banner">
+		<section class="hamburger-menu" aria-label="Huvudmeny">
+			<hr class="header__lines" aria-hidden="true">
+			<hr class="header__lines" aria-hidden="true">
+			<hr class="header__lines" aria-hidden="true">
 		</section>
-		<a href="../index.html"> <img src="../assets/images/white icon.png" alt="White logo of Yum Yum Gimme Sum" class="logo"> </a>
-		<nav class="navigation user-menu">
+		<a href="../index.html" aria-label="Gå till startsidan">
+			<img src="../assets/images/white icon.png" alt="White logo of Yum Yum Gimme Sum" class="logo">
+		</a>
+		<nav class="navigation user-menu" aria-label="Navigering för inloggade användare">
 			<section class="nav-top">
 				<img src="../assets/images/white icon.png" alt="White logo of Yum Yum Gimme Sum" class="logo">
-				<i class="fa-solid fa-xmark" style="color: #ffffff;"></i>
+				<i class="fa-solid fa-xmark" style="color: #ffffff;" role="button" aria-label="Stäng meny"></i>
 			</section>
 			<section class="list-item">
-				<a href="./login.html">LOGGA IN/REGISTRERA DIG</a>
-				<a href="./meny.html">SE MENY</a>
-				<a href="./om_oss.html">OM OSS</a>
-				<a href="./location.html">HITTA OSS</a>
+				<a href="./login.html" aria-label="Logga in eller registrera dig">LOGGA IN/REGISTRERA DIG</a>
+				<a href="./meny.html" aria-label="Visa meny">SE MENY</a>
+				<a href="./om_oss.html" aria-label="Läs om oss">OM OSS</a>
+				<a href="./location.html" aria-label="Hitta oss">HITTA OSS</a>
 			</section>
 		</nav>
 
-		<nav class="navigation login-menu">
+		<nav class="navigation login-menu" aria-label="Navigering för användare som är inloggade">
 			<section class="nav-top">
 				<img src="../assets/images/white icon.png" alt="White logo of Yum Yum Gimme Sum" class="logo">
-				<i class="fa-solid fa-xmark" style="color: #ffffff;"></i>
+				<i class="fa-solid fa-xmark" style="color: #ffffff;" role="button" aria-label="Stäng meny"></i>
 			</section>
 			<section class="list-item">
-				<a href="./profil.html">MIN PROFIL</a>
-				<a href="./orderhistorik.html">HISTORIK</a>
-				<a href="./meny.html">SE MENY</a>
-				<a href="./om_oss.html">OM OSS</a>
-				<a href="./location.html">HITTA OSS</a>
-				<a class="log-out">LOGGA UT</a>
+				<a href="./profil.html" aria-label="Visa min profil">MIN PROFIL</a>
+				<a href="./orderhistorik.html" aria-label="Visa orderhistorik">HISTORIK</a>
+				<a href="./meny.html" aria-label="Se meny">SE MENY</a>
+				<a href="./om_oss.html" aria-label="Läs om oss">OM OSS</a>
+				<a href="./location.html" aria-label="Hitta oss">HITTA OSS</a>
+				<a class="log-out" href="#" aria-label="Logga ut">LOGGA UT</a>
 			</section>
 		</nav>
 	</header>
-	<div class="content-wrapper login-wrapper">
-		<h1 class="login-title">REGISTRERA DIG</h1>
+
+	<div class="content-wrapper login-wrapper" role="main">
+		<h1 class="login-title" id="register-title">REGISTRERA DIG</h1>
 		<form class="login-form register-form" aria-labelledby="register-title">
 			<h2 class="form-title">Välkommen till Yum Yum Gimme Sum!</h2>
 
 			<p class="login-text">Genom att skapa ett konto nedan kan du spara och se din orderhistorik</p>
 
 			<label for="name">Namn:</label>
-			<input type="text" id="name" name="name" autocomplete="name" required>
+			<input type="text" id="name" name="name" autocomplete="name" required aria-required="true" aria-describedby="name-description">
 
 			<label for="email">Email:</label>
-			<input type="text" id="email" name="email" autocomplete="off" required>
+			<input type="text" id="email" name="email" autocomplete="off" required aria-required="true" aria-describedby="email-description">
 
 			<label for="password">Lösenord:</label>
-			<input type="password" id="password" name="password" autocomplete="off" required>
-			<p class="account">Redan användare? <a href="login.html">Logga in här</a></p>
+			<input type="password" id="password" name="password" autocomplete="off" required aria-required="true" aria-describedby="password-description">
 
-			<button class="login-button" type="submit">Registrera</button>
+			<p class="account">Redan användare? <a href="login.html" aria-label="Logga in här">Logga in här</a></p>
+
+			<button class="login-button" type="submit" aria-label="Registrera konto">Registrera</button>
 		</form>
-
 	</div>
 
 </body>

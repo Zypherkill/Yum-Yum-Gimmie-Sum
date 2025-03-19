@@ -22,7 +22,7 @@ export function showNavigation() {
         slideMenu.forEach(menu => {
             menu.classList.add('open');
         });
-        if (window.location.pathname === "/pages/meny.html") {
+        if (window.location.pathname.includes ("/pages/meny.html")) {
             menuWrapper.classList.add('blur');
         } else {
             contentWrapper.classList.add('blur');
@@ -35,7 +35,7 @@ export function showNavigation() {
             slideMenu.forEach(menu => {
                 menu.classList.remove('open');
             });
-            if (window.location.pathname === "/pages/meny.html") {
+            if (window.location.pathname.includes ("/pages/meny.html")) {
                 menuWrapper.classList.remove('blur');
             } else {
                 contentWrapper.classList.remove('blur');
