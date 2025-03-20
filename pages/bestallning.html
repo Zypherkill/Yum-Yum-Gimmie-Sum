@@ -25,17 +25,11 @@
                 SE KVITTO
             </button>
 
-            <section>
-                <dialog id="receipt-overlay" class="overlay" aria-labelledby="receipt-heading" aria-hidden="true">
-                    <article class="overlay-content">
-                        <button id="close-overlay" class="close-button" aria-label="Stäng kvittofönstret">
-                            &times;
-                        </button>
-                        <h2 id="receipt-heading">Ditt kvitto</h2>
-                        <section class="receipt-container"></section>
-                    </article>
-                </dialog>
-            </section>
-        </section>
-    </body>
+            <div id="receipt-overlay" class="overlay">
+                <div class="overlay-content">
+                    <span id="close-overlay" class="close-button">&times;</span>
+                    <div class="receipt-container"></div>
+                </div>
+            </div>
+</body>
 </html>

@@ -15,7 +15,7 @@ export function displayReceipt() {
         return;
     }
 
-    const receiptContainer = document.querySelector("#receipt-container");
+    const receiptContainer = document.querySelector(".receipt-container");
     if (!receiptContainer) {
         console.error("Receipt container element not found.");
         return;
@@ -53,9 +53,8 @@ if (window.location.pathname.includes("bestallning.html")) {
     document.addEventListener("DOMContentLoaded", () => {
         // Lägger till lyssnare på knappen för att visa kvittot
         document
-            .getElementById("receipt-button")
             .addEventListener("click", () => {
-                window.location.href = "kvitto.html";
+                document.getElementById("receipt-overlay").style.display = "block";
             });
 
         // Lägger till lyssnare på stängningsknappen för att dölja overlayen
@@ -70,4 +69,4 @@ if (window.location.pathname.includes("bestallning.html")) {
             window.location.href = "meny.html"; // Navigera till menynsidan
         });
     });
-}
+}   
