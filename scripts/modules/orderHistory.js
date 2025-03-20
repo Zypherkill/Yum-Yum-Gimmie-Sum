@@ -1,42 +1,53 @@
 export function showOrderHistory() {
     document.addEventListener("DOMContentLoaded", () => {
-        const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
-        if (!loggedInUser) {
-            alert("Du måste vara inloggad för att se din orderhistorik.");
-            window.location.href = "login.html";
+        const orderHistory = JSON.parse(localStorage.getItem("orderHistory")) || [];
+
+        // Ensure orderHistory is an array
+        if (!Array.isArray(orderHistory)) {
+            console.error("orderHistory is not an array. Check localStorage structure.");
             return;
         }
-
-        const orderHistory = JSON.parse(localStorage.getItem("orderHistory")) || {};
-        const userOrders = orderHistory[loggedInUser.email] || [];
 
         const historyContainer = document.querySelector(".history-container");
         if (!historyContainer) return; // Ensure the container exists
 
         historyContainer.innerHTML =
+
             userOrders.length > 0
                 ? userOrders
                     .map(
                         (order) => `
+
+            orderHistory.length > 0
+                ? orderHistory
+                      .map(
+                          (order) => `
+
                     <div class="order">
-                        <h2>Order: ${generateOrderNumber()}</h2>
+                        <h2>${order.orderNumber}</h2>
                         <ul>
-                            ${order
+                            ${order.items
                                 .map(
                                     (item) =>
                                         `<li>${item.name} - ${item.quantity} x ${item.price} sek</li>`
                                 )
                                 .join("")}
                         </ul>
-                        <p>Totalt: ${order.reduce(
+                        <p>Totalt: ${order.items.reduce(
                             (sum, item) => sum + item.price * item.quantity,
                             0
                         )} sek</p>
                     </div>
                 `
+
                     )
                     .join("")
                 : "<p>Du har inga tidigare ordrar.</p>";
+
+                      )
+                      .join("")
+                : "<p>Det finns inga ordrar.</p>";
+
     });
 }
 
