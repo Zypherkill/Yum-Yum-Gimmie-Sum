@@ -38,6 +38,21 @@
                 </section>
             </nav>
         </header>
+        <div class="content-wrapper" role="main">
+            <section class="user-profile">
+                <img class="profile-image" src="" alt="Profilbild" width="100" aria-labelledby="profile-heading">
+              
+                <input type="file" id="profile-image-upload" aria-describedby="profile-image-upload-description">
+                <label for="profile-name">Namn:</label>
+                <input type="text" class="profile-name" id="profile-name" aria-describedby="name-description">
+                <label for="profile-email">Email:</label>
+                <input type="email" class="profile-email" id="profile-email" aria-describedby="email-description">
+                <label for="profile-password">Lösenord:</label>
+                <input type="password" class="profile-password" id="profile-password" aria-describedby="password-description">
+                <button class="update-profile-btn" aria-label="Uppdatera profil">Uppdatera profil</button>
+            </section>
+        </div>
+    
         <main class="content-wrapper history-wrapper" role="main">
             <h1 id="order-history-heading">Orderhistorik</h1> 
             <div class="history-container" aria-live="polite" role="region" aria-labelledby="order-history-heading"></div>

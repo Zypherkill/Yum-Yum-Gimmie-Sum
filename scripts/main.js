@@ -36,6 +36,7 @@ if (window.location.pathname.includes("/pages/location.html")) {
 
 if (window.location.pathname.includes("/pages/orderhistorik.html")) {
     showOrderHistory();
+    displayUserProfile();
 }
 
 
