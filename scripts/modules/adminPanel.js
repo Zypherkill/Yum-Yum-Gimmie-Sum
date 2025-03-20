@@ -1,6 +1,6 @@
 import { getUsers, getProducts } from "./api.js";
 import { showOrderHistory } from "./orderHistory.js";
-import { globalEventListener } from "../../utils/globalEventListener.js"; 
+import { globalEventListener } from "../../utils/globalEventListener.js";
 
 // Function to render Users table
 function renderUsers(userList, usersTableBody) {
@@ -54,7 +54,7 @@ function filterUsers(userList, usersTableBody, searchInput) {
 
 function updateUserRole(user, newRole) {
     user.role = newRole;
-    
+
     let storedUsers = JSON.parse(localStorage.getItem("users")) || [];
     const userIndex = storedUsers.findIndex(u => u.email === user.email);
 
@@ -64,14 +64,28 @@ function updateUserRole(user, newRole) {
     }
 }
 
+export async function adminPanelBtn() {
+    // Get the logged-in user from localStorage
+    const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
+
+    // Check if the logged-in user exists and is an admin
+    if (loggedInUser && loggedInUser.role === 'admin') {
+        // If the user is an admin, show the admin panel button
+         window.location.href = 'adminPanel.html'; // Redirect to the admin panel page
+        
+    }
+}
+
+
+
 // render order history
 function renderOrders(orderList, ordersTableBody) {
     ordersTableBody.innerHTML = "";
-    
+
     orderList.forEach(order => {
         order.items.forEach(item => {
             const row = document.createElement("tr");
-            
+
             // Status dropdown
             const statusDropdown = document.createElement("select");
             const statuses = ["Pending", "Processing", "Completed"];
@@ -110,10 +124,10 @@ function renderOrders(orderList, ordersTableBody) {
 // Function to update order status
 function updateOrderStatus(order, newStatus) {
     order.status = newStatus;
-    
+
     let orderHistory = JSON.parse(localStorage.getItem("orderHistory")) || [];
     const orderIndex = orderHistory.findIndex(o => o.orderNumber === order.orderNumber);
-    
+
     if (orderIndex !== -1) {
         orderHistory[orderIndex] = order;
         localStorage.setItem("orderHistory", JSON.stringify(orderHistory));
@@ -136,14 +150,14 @@ function filterOrdersByStatus(status, ordersTableBody) {
 export async function showAdminPanel() {
     document.addEventListener("DOMContentLoaded", async function () {
         const userData = await getUsers();
-         // Users from API response
+        // Users from API response
         const apiUsers = userData?.users ?? [];
 
         // Fetch users from localStorage
         let storedUsers = JSON.parse(localStorage.getItem("users")) || [];
 
         // Combine both sources and remove duplicates based on email (assuming email is unique)
-        const allUsers = [...storedUsers, ...apiUsers.filter(apiUser => 
+        const allUsers = [...storedUsers, ...apiUsers.filter(apiUser =>
             !storedUsers.some(storedUser => storedUser.email === apiUser.email)
         )];
 
@@ -154,7 +168,7 @@ export async function showAdminPanel() {
         const usersSearchInput = document.getElementById("search");
         const usersTableBody = document.getElementById("usersTable").querySelector("tbody");
         const ordersTableBody = document.getElementById("ordersTable").querySelector("tbody");
-       
+
         const usersTableContainer = document.getElementById("usersTableContainer");
         const ordersTableContainer = document.getElementById("ordersTableContainer");
 
@@ -187,4 +201,4 @@ export async function showAdminPanel() {
     });
 }
 
-
+showAdminPanel();
