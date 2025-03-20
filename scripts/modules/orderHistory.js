@@ -12,10 +12,17 @@ export function showOrderHistory() {
         if (!historyContainer) return; // Ensure the container exists
 
         historyContainer.innerHTML =
+
+            userOrders.length > 0
+                ? userOrders
+                    .map(
+                        (order) => `
+
             orderHistory.length > 0
                 ? orderHistory
                       .map(
                           (order) => `
+
                     <div class="order">
                         <h2>${order.orderNumber}</h2>
                         <ul>
@@ -32,9 +39,15 @@ export function showOrderHistory() {
                         )} sek</p>
                     </div>
                 `
+
+                    )
+                    .join("")
+                : "<p>Du har inga tidigare ordrar.</p>";
+
                       )
                       .join("")
                 : "<p>Det finns inga ordrar.</p>";
+
     });
 }
 

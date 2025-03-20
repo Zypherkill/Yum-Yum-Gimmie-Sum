@@ -91,9 +91,9 @@ function updateCart() {
         <p class="total-price">Total: ${totalPrice} SEK</p>
     </article>
 
-    <article class="orderButtonArticle">
-    <a href="../pages/bestallning.html" class="button button--top orderButton"> <button>TAKE MY MONEY</button></a>
-    </article>`;
+    
+    <a href="../pages/bestallning.html" class="button button--top orderButton"> TAKE MY MONEY</a>
+    `;
 
 }
 
