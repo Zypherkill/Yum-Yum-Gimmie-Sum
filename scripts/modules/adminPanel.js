@@ -76,8 +76,6 @@ export async function adminPanelBtn() {
     }
 }
 
-
-
 // render order history
 function renderOrders(orderList, ordersTableBody) {
     ordersTableBody.innerHTML = "";
@@ -140,7 +138,7 @@ function adminShowOrderHistory(ordersTableBody) {
     renderOrders(orderHistory, ordersTableBody);
 }
 
-// Function to filter orders by statusx 
+// Function to filter orders by status
 function filterOrdersByStatus(status, ordersTableBody) {
     const orderHistory = JSON.parse(localStorage.getItem("orderHistory")) || [];
     const filteredOrders = status === "All" ? orderHistory : orderHistory.filter(order => order.status === status);
@@ -149,6 +147,11 @@ function filterOrdersByStatus(status, ordersTableBody) {
 
 export async function showAdminPanel() {
     document.addEventListener("DOMContentLoaded", async function () {
+        // Check if we are on the admin panel page
+        if (!window.location.pathname.includes("adminPanel.html")) {
+            return;
+        }
+
         const userData = await getUsers();
         // Users from API response
         const apiUsers = userData?.users ?? [];
@@ -166,16 +169,22 @@ export async function showAdminPanel() {
 
         // DOM Elements
         const usersSearchInput = document.getElementById("search");
-        const usersTableBody = document.getElementById("usersTable").querySelector("tbody");
-        const ordersTableBody = document.getElementById("ordersTable").querySelector("tbody");
+        const usersTable = document.getElementById("usersTable");
+        const ordersTable = document.getElementById("ordersTable");
+
+        if (!usersTable || !ordersTable) {
+            console.error("Users table or orders table element not found.");
+            return;
+        }
+
+        const usersTableBody = usersTable.querySelector("tbody");
+        const ordersTableBody = ordersTable.querySelector("tbody");
 
         const usersTableContainer = document.getElementById("usersTableContainer");
         const ordersTableContainer = document.getElementById("ordersTableContainer");
 
-
         // Render Users Table with combined users
         renderUsers(allUsers, usersTableBody);
-
 
         usersTableContainer.style.display = "none";
         ordersTableContainer.style.display = "none";
