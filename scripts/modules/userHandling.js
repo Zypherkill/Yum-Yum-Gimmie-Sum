@@ -234,7 +234,6 @@ export function saveOrderHistory(order) {
     localStorage.setItem("orderHistory", JSON.stringify(orderHistory));
 }
 
-
 // Hämta och uppdatera profilinformation
 export function displayUserProfile() {
     const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
