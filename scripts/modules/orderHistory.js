@@ -1,12 +1,14 @@
 export function showOrderHistory() {
     document.addEventListener("DOMContentLoaded", () => {
-        const orderHistory = JSON.parse(localStorage.getItem("orderHistory")) || [];
+        const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser")); // Get logged-in user
 
-        // Ensure orderHistory is an array
-        if (!Array.isArray(orderHistory)) {
-            console.error("orderHistory is not an array. Check localStorage structure.");
+        if (!loggedInUser || !loggedInUser.email) {
+            console.error("No logged-in user found.");
             return;
         }
+
+        const userOrderKey = `orderHistory_${loggedInUser.email}`; // Fetch orders for this user
+        const orderHistory = JSON.parse(localStorage.getItem(userOrderKey)) || [];
 
         const historyContainer = document.querySelector(".history-container");
         if (!historyContainer) return; // Ensure the container exists
@@ -34,9 +36,10 @@ export function showOrderHistory() {
                 `
                       )
                       .join("")
-                : "<p>Det finns inga ordrar.</p>";
+                : "<p>Du har inga tidigare beställningar.</p>";
     });
 }
+
 
 
 export function generateOrderNumber() {

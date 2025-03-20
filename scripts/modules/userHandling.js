@@ -1,4 +1,5 @@
 import { getUsers } from "../modules/api.js";
+import { generateOrderNumber } from "../modules/orderHistory.js";
 
 // Registera ny användare
 
@@ -220,19 +221,23 @@ export function logoutUser() {
 
 
 logoutUser();
-
 export function saveOrderHistory(order) {
-    const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
-    if (!loggedInUser) return;
+    const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser")); // Get logged-in user
 
-    let orderHistory = JSON.parse(localStorage.getItem("orderHistory")) || {};
-    if (!orderHistory[loggedInUser.email]) {
-        orderHistory[loggedInUser.email] = [];
+    if (!loggedInUser || !loggedInUser.email) {
+        console.error("No logged-in user found.");
+        return;
     }
 
-    orderHistory[loggedInUser.email].push(order);
-    localStorage.setItem("orderHistory", JSON.stringify(orderHistory));
+    const userOrderKey = `orderHistory_${loggedInUser.email}`; // Unique key per user
+    const orderHistory = JSON.parse(localStorage.getItem(userOrderKey)) || [];
+
+    order.orderNumber = generateOrderNumber(); // Generate unique order number
+    orderHistory.push(order);
+
+    localStorage.setItem(userOrderKey, JSON.stringify(orderHistory)); // Save orders for this user
 }
+
 
 // Hämta och uppdatera profilinformation
 export function displayUserProfile() {
