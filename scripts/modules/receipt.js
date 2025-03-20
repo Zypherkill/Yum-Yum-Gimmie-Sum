@@ -29,7 +29,7 @@ export function displayReceipt() {
     const orderList = document.createElement("ul");
     order.items.forEach((item) => {
         const listItem = document.createElement("li");
-        listItem.textContent = `${item.name} - ${item.quantity} x ${item.price} sek`;
+        listItem.textContent = `${item.name} - ${item.quantity} x ${item.price} kr`;
         orderList.appendChild(listItem);
     });
     receiptContainer.appendChild(orderList);
@@ -39,7 +39,7 @@ export function displayReceipt() {
         0
     );
     const totalPriceElement = document.createElement("p");
-    totalPriceElement.textContent = `Totalt: ${totalPrice} sek`;
+    totalPriceElement.textContent = `Totalt: ${totalPrice} kr`;
     receiptContainer.appendChild(totalPriceElement);
 }
 

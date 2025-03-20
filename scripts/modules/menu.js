@@ -64,36 +64,48 @@ export async function showMenu() {
         items.forEach((item) => {
             const menuItem = document.createElement("article");
             menuItem.classList.add("menu-item");
-
+    
             const itemName = document.createElement("h2");
             itemName.textContent = item.name;
             itemName.classList.add("menu-title");
-
+    
             const itemIngredients = document.createElement("p");
             itemIngredients.textContent = Array.isArray(item.ingredients) && item.ingredients.length > 0
                 ? item.ingredients.join(", ")
                 : "";
             itemIngredients.classList.add("menu-ingredients");
-
+    
             const itemPrice = document.createElement("p");
-            itemPrice.textContent = `${item.price} sek`;
+            itemPrice.textContent = `${item.price} kr`;
             itemPrice.classList.add("menu-price");
-
+    
             const plusButton = document.createElement("i");
             plusButton.classList.add("fa-solid", "fa-circle-plus");
             plusButton.setAttribute("data-id", item.id);
-
+            plusButton.setAttribute("tabindex", "0"); // Make it focusable
+            plusButton.addEventListener("keydown", handleKeydown); // Handle Enter/Space press
+    
             const minusButton = document.createElement("i");
             minusButton.classList.add("fa-solid", "fa-circle-minus");
             minusButton.setAttribute("data-id", item.id);
-
+            minusButton.setAttribute("tabindex", "0"); // Make it focusable
+            minusButton.addEventListener("keydown", handleKeydown); // Handle Enter/Space press
+    
+            // Append plusButton first, then minusButton
             menuItem.appendChild(itemName);
             menuItem.appendChild(itemIngredients);
             menuItem.appendChild(itemPrice);
-            menuItem.appendChild(minusButton);
-            menuItem.appendChild(plusButton);
+            menuItem.appendChild(plusButton); // Plus button comes first in the tab order
+            menuItem.appendChild(minusButton); // Minus button comes after the plus button
             menuRef.appendChild(menuItem);
         });
+    }
+    
+    function handleKeydown(event) {
+        if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault(); // Prevent default behavior for Space (scrolling)
+            event.target.click();  // Trigger click event on the target element
+        }
     }
 
     renderMenu(productData);

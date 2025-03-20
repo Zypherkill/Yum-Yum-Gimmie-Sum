@@ -444,7 +444,9 @@ button {
     padding: 0.5rem;
     appearance: none;
 }
-
+.filter-dropdown:hover{
+    background-color: var(--button-color);
+}
 
 .blur {
     filter: blur(5px);
@@ -775,4 +777,12 @@ td {
 /* Hide tables by default */
 #ordersTableContainer, #usersTableContainer {
     display: none;
+}
+
+.history-wrapper {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 2rem;
+    padding-top: 3rem;
 }
