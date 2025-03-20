@@ -44,29 +44,24 @@ export function displayReceipt() {
 }
 
 // Kontrollera om vi är på kvitto.html-sidan
-if (window.location.pathname.includes("kvitto.html")) {
+if (window.location.pathname.includes("receipt.html")) {
     document.addEventListener("DOMContentLoaded", displayReceipt);
 }
 
 // Kontrollera om vi är på bestallning.html-sidan
 if (window.location.pathname.includes("bestallning.html")) {
-    document.addEventListener("DOMContentLoaded", () => {
-        // Lägger till lyssnare på knappen för att visa kvittot
-        document
-            .addEventListener("click", () => {
-                document.getElementById("receipt-overlay").style.display = "block";
-            });
-
-        // Lägger till lyssnare på stängningsknappen för att dölja overlayen
-        document.getElementById("close-overlay").addEventListener("click", () => {
-            document.getElementById("receipt-overlay").style.display = "none";
-        });
-
-        // Lägger till lyssnare på knappen för att göra en ny beställning
-        document.querySelector("#new-order").addEventListener("click", () => {
-            localStorage.removeItem("cart"); // Rensa cart i local storage
-            localStorage.removeItem("lastOrder"); // Rensa lastOrder
-            window.location.href = "meny.html"; // Navigera till menynsidan
-        });
+    // Lägger till lyssnare på knappen för att visa kvittot
+    document.getElementById("receipt-button").addEventListener("click", () => {
+        document.getElementById("receipt-overlay").style.display = "block";
+    })
+    // Lägger till lyssnare på stängningsknappen för att dölja overlayen
+    document.getElementById("close-overlay").addEventListener("click", () => {
+        document.getElementById("receipt-overlay").style.display = "none";
     });
-}   
+
+    // Lägger till lyssnare på knappen för att göra en ny beställning
+    document.querySelector("#new-order").addEventListener("click", () => {
+        localStorage.removeItem("cart"); // Rensa local storage
+        window.location.href = "meny.html"; // Navigera till menynsidan
+    });
+}
