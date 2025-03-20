@@ -296,3 +296,11 @@ export function updateUserProfile() {
     }
 }
 
+export function orderHistoryProfile() {
+    const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+    const profileImage = document.querySelector('.profile-image');
+    const profileName = document.querySelector('.profile-name');
+
+    profileImage.src = loggedInUser.profile_image;
+    profileName.textContent = loggedInUser.username;
+}
