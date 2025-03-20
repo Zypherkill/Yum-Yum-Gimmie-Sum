@@ -3,7 +3,7 @@ import { placeOrder } from "./modules/delivery.js";
 import { showNavigation } from "../utils/hamburgermenu.js";
 import { displayReceipt } from "./modules/receipt.js";
 import { showAdminPanel } from "./modules/adminPanel.js";
-import { validateRegistration, validateLogin, displayUserProfile, updateUserProfile, logoutUser } from "./modules/userHandling.js";
+import { validateRegistration, validateLogin, displayUserProfile, updateUserProfile, logoutUser, orderHistoryProfile } from "./modules/userHandling.js";
 import { showLocation } from "./modules/location.js";
 import { showOrderHistory } from "./modules/orderHistory.js";
 
@@ -36,7 +36,7 @@ if (window.location.pathname.includes("/pages/location.html")) {
 
 if (window.location.pathname.includes("/pages/orderhistorik.html")) {
     showOrderHistory();
-    displayUserProfile();
+    orderHistoryProfile();
 }
 
 

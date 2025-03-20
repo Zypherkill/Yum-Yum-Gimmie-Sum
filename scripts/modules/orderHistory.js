@@ -44,7 +44,7 @@ export function showOrderHistory() {
 
 export function generateOrderNumber() {
     const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-    let orderNumber = "Ordernummer: #";
+    let orderNumber = "Order: #";
     
     for (let i = 0; i < 6; i++) {
         let randomIndex = Math.floor(Math.random() * characters.length);
