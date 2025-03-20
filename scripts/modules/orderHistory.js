@@ -16,8 +16,8 @@ export function showOrderHistory() {
         historyContainer.innerHTML =
             userOrders.length > 0
                 ? userOrders
-                      .map(
-                          (order) => `
+                    .map(
+                        (order) => `
                     <div class="order">
                         <h2>Order: ${generateOrderNumber()}</h2>
                         <ul>
@@ -34,8 +34,8 @@ export function showOrderHistory() {
                         )} sek</p>
                     </div>
                 `
-                      )
-                      .join("")
+                    )
+                    .join("")
                 : "<p>Du har inga tidigare ordrar.</p>";
     });
 }

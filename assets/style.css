@@ -191,13 +191,8 @@ body {
         justify-content: center;
         cursor: pointer;
         border-radius: 15px;
-
-    button {
-        color: var(--primary-font-color);
         font-size: 1.5rem;
-        background-color: transparent;
-        border: none;
-    }
+        color: var(--primary-font-color);
 }
 
 .button--top {
@@ -213,11 +208,6 @@ body {
     border: 1px solid white;
     align-self: start;
 }
-.button--top:hover, .button--bottom:hover {
-    background-color: #238e44;
-}
-
- 
 
 .about-us {
     text-align: center; /* la till text align center */
@@ -286,6 +276,7 @@ body {
     padding-top: 1rem;
     row-gap: 0.5rem;
     padding-left: 0.7rem;
+    width: 100%;
 
     .menu-title {
         grid-column: 1;
@@ -319,8 +310,12 @@ body {
     }
 }
 
-.menu-item:hover,a:hover {
-    background-color: rgba(241, 240, 236, 0.2);
+.menu-item:hover, a:hover {
+    background-color: rgba(241, 240, 236, 0.173);
+}
+
+.orderButton:hover {
+    background-color: rgba(36, 29, 29, 0.812);  
 }
 
 .order-page {
@@ -371,12 +366,16 @@ body {
 #cart {
     width: 100%;
     grid-row: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .menu-item.total-price-container {
     grid-column: 1 / -1;
     font-size: 30px;
     padding-right: 0.7rem;
+    width: 100%;
 }
 
 .total-price {
@@ -393,19 +392,9 @@ body {
 }
 
 .orderButton {
-    display: flex;
-    height: 25%;
     width: 95%;
-
 }
 
-.orderButton:hover {
-    background-color: #332f2f;
-}
-.orderButtonArticle {
-    display: flex;
-    justify-content: center;
-}
 
 .cart-modal {
     position: fixed;
@@ -440,8 +429,6 @@ body {
 .hidden {
     display: none;
 }
-
-
 
 button {
     cursor: pointer;
@@ -516,7 +503,6 @@ button {
     top: 10px;
     right: 10px;
     font-size: 24px;
-    cursor: pointer;
 }
 
 
@@ -642,7 +628,7 @@ h1{
 
     .profile-image {
         width: 50%;
-        height: 25%;
+        height: 60%;
         border-radius: 50%;
         aspect-ratio: 1;
         object-fit: cover;
@@ -706,52 +692,74 @@ h1{
     }
 }
 
+.admin-wrapper {
+    grid-template-rows: 4rem 4rem 5rem 1fr;
+    padding: 0 0.5rem;
+}
 
 /* Search and filter bar */
 .admin-controls {
     display: flex;
-    justify-content: space-between;
     padding: 20px;
     margin-bottom: 20px;
+    gap: 1rem;
 }
 
 /* Search input and filter dropdown */
 .admin-controls input, .admin-controls select {
     padding: 10px;
     font-size: 16px;
-    width: 20vw;
     border-radius: 5px;
     border: 1px solid #ccc;
+    background-color: white;
 }
 
 /* Table styling */
-table {
+.table-container {
+    align-self: start;
+    justify-items: center;
     width: 100%;
     border-collapse: collapse;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    background-color: white;}
+}
 
+#usersTable {
+    font-size: 12px;
+    
+    td,th {
+        padding: 2px;
+    }
+
+    select {
+        font-size: 11px;
+    }
+
+    button {
+        font-size: 11px;
+    }
+}
 
 /* Table header and data cells */
 th, td {
-
-    padding: 12px;
+    flex-wrap: wrap;
+    padding: 8px;
     text-align: center;
     border-bottom: 1px solid #f2f2f2;
-}
-/* Green color for the table header */
-th {
     background-color: #2e8b57; 
     color: white;
     font-weight: 600;
 }
 
+td {
+    background-color: white;
+    color: var(--secondary-font-color);
+}
 
 /* Button and dropdown styling */
-button, select {
+#adminPanelBtn,.admin-btn, #statusFilter {
     cursor: pointer;
-    padding: 8px 12px;
+    padding: 4px 12px;
     border: 1px solid #ddd;
     background-color: #2e8b57; /* Green button */
     color: white;
@@ -761,15 +769,11 @@ button, select {
 }
 
 /* Button and dropdown hover effect */
-button:hover, select:hover {
+.admin-btn:hover, #statusFilter:hover {
     background-color: #238e44; /* Darker green on hover */
 }
 
 /* Hide tables by default */
 #ordersTableContainer, #usersTableContainer {
     display: none;
-}
-
-.orderButton:hover{
-    background-color: #238e44;
 }
