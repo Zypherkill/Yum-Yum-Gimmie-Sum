@@ -776,3 +776,11 @@ td {
 #ordersTableContainer, #usersTableContainer {
     display: none;
 }
+
+.history-wrapper {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 2rem;
+    padding-top: 3rem;
+}

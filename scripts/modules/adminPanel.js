@@ -109,7 +109,7 @@ function renderOrders(orderList, ordersTableBody) {
                 <td>${order.orderNumber}</td>
                 <td>${item.name}</td>
                 <td>${item.quantity}</td>
-                <td>${item.price} sek</td>
+                <td>${item.price} kr</td>
                 <td></td>
             `;
             // Append dropdown to status column

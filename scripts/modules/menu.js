@@ -76,7 +76,7 @@ export async function showMenu() {
             itemIngredients.classList.add("menu-ingredients");
 
             const itemPrice = document.createElement("p");
-            itemPrice.textContent = `${item.price} sek`;
+            itemPrice.textContent = `${item.price} kr`;
             itemPrice.classList.add("menu-price");
 
             const plusButton = document.createElement("i");
