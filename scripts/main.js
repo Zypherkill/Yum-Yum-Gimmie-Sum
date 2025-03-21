@@ -2,14 +2,61 @@ import { showMenu } from "./modules/menu.js";
 import { placeOrder } from "./modules/delivery.js";
 import { showNavigation } from "../utils/hamburgermenu.js";
 import { displayReceipt } from "./modules/receipt.js";
+import { showAdminPanel } from "./modules/adminPanel.js";
+import { validateRegistration, validateLogin, displayUserProfile, updateUserProfile, logoutUser, orderHistoryProfile } from "./modules/userHandling.js";
+import { showLocation } from "./modules/location.js";
+import { showOrderHistory } from "./modules/orderHistory.js";
 
-if (window.location.pathname.includes ("/pages/bestallning.html")) {
-    placeOrder();
+
+if (!window.location.pathname.includes("/pages/bestallning.html") ) {
+    logoutUser();
 }
 
-if (window.location.pathname.includes  ("/pages/meny.html")) {
+if (window.location.pathname.includes("/pages/meny.html")) {
     showMenu();
+}
+
+if (window.location.pathname.includes("/pages/register.html")) {
+    validateRegistration();
+}
+
+if (window.location.pathname.includes("/pages/login.html")) {
+    validateLogin();
+}
+
+if (window.location.pathname.includes ("/pages/adminPanel.html")) {
+    showAdminPanel();
+
+}
+if (window.location.pathname.includes("/pages/location.html")) {
+
+    showLocation();  
 
 }
 
-showNavigation();
+if (window.location.pathname.includes("/pages/orderhistorik.html")) {
+    showOrderHistory();
+    orderHistoryProfile();
+}
+
+
+if (window.location.pathname.includes("/pages/bestallning.html")) {
+    placeOrder();
+    displayReceipt();
+}
+if (window.location.pathname.includes("/pages/profil.html")) {
+    displayUserProfile();
+    document.addEventListener("DOMContentLoaded", () => {
+        const updateBtn = document.querySelector(".update-profile-btn");
+        if (updateBtn) {
+            updateBtn.addEventListener("click", updateUserProfile);
+        } else {
+            console.error("Update Profile button not found!");
+        }
+    });
+}
+
+
+
+showNavigation(); 
+

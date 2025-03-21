@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foodtruck i Karlstad</title>
+    <link rel="stylesheet" href="../assets/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script type="module" defer src="../scripts/main.js"></script>
+</head>
+<header class="header" role="banner">
+    <section class="hamburger-menu" aria-label="Huvudmeny">
+        <hr class="header__lines" aria-hidden="true">
+        <hr class="header__lines" aria-hidden="true">
+        <hr class="header__lines" aria-hidden="true">
+    </section>
+    <a href="../index.html" aria-label="Gå till startsidan">
+        <img src="../assets/images/white icon.png" alt="White logo of Yum Yum Gimme Sum" class="logo">
+    </a>
+    <nav class="navigation user-menu" aria-label="Navigering för användare">
+        <section class="nav-top">
+            <img src="../assets/images/white icon.png" alt="White logo of Yum Yum Gimme Sum" class="logo">
+            <i class="fa-solid fa-xmark" style="color: #ffffff;" aria-label="Stäng meny"></i>
+        </section>
+        <section class="list-item">
+            <a href="./login.html" aria-label="Logga in eller registrera dig">LOGGA IN/REGISTRERA DIG</a>
+            <a href="./meny.html" aria-label="Se meny">SE MENY</a>
+            <a href="./om_oss.html" aria-label="Om oss">OM OSS</a>
+            <a href="./location.html" aria-label="Hitta oss">HITTA OSS</a>
+        </section>
+    </nav>
+
+    <nav class="navigation login-menu" aria-label="Navigering för inloggade användare">
+        <section class="nav-top">
+            <img src="../assets/images/white icon.png" alt="White logo of Yum Yum Gimme Sum" class="logo">
+            <i class="fa-solid fa-xmark" style="color: #ffffff;" aria-label="Stäng meny"></i>
+        </section>
+        <section class="list-item">
+            <a href="./profil.html" aria-label="Min profil">MIN PROFIL</a>
+            <a href="./orderhistorik.html" aria-label="Historik">HISTORIK</a>
+            <a href="./meny.html" aria-label="Se meny">SE MENY</a>
+            <a href="./om_oss.html" aria-label="Om oss">OM OSS</a>
+            <a href="./location.html" aria-label="Hitta oss">HITTA OSS</a>
+            <a class="log-out" aria-label="Logga ut">LOGGA UT</a>
+        </section>
+    </nav>
+</header>
+<body>
+    <div class="content-wrapper location">
+        <h1 id="location-title">Var är vi idag?</h1>
+        <div id="map" role="region" aria-labelledby="location-title"></div>
+    </div>
+</body>
+</html>

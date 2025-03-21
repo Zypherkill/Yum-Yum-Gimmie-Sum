@@ -1,10 +1,14 @@
-function displayETA(eta) {
+import { saveOrderHistory } from "./userHandling.js";
+import { generateOrderNumber } from "./orderHistory.js";
+
+function displayETA(eta, orderNumberValue) {
     let formattedETA = formatTime(eta);
 
     let article = document.createElement("article");
     let img = document.createElement("img");
     let h2 = document.createElement("h2");
     let p = document.createElement("p");
+    let orderNumber = document.createElement("p");
 
     article.classList.add("delivery");
     img.classList.add("delivery__img");
@@ -15,17 +19,17 @@ function displayETA(eta) {
     img.alt = "image of delivery container";
 
     h2.textContent = "Din mat är på väg!";
-
     p.textContent = `ETA ${formattedETA} min.`;
+    orderNumber.textContent = `${orderNumberValue}`; // Hej Hannes, Använder samma ordernummer som visas på skärmen
 
     article.appendChild(img);
     article.appendChild(h2);
     article.appendChild(p);
+    article.appendChild(orderNumber);
 
     document.querySelector(".content-wrapper").appendChild(article);
 }
 
-// updatera display ETA till = (eta, dish)  `Dina ${dish} är klar om ${formattedETA} minuter.`;
 
 function getRandomTime(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -33,9 +37,29 @@ function getRandomTime(min, max) {
 
 export function placeOrder() {
     let eta = getRandomTime(15, 30);
-    displayETA(eta);
+    const orderNumber = generateOrderNumber();
+
+    displayETA(eta, orderNumber); // Hej Hannes
+    // Hej Hannes, se nedan också
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    if (cart.length > 0) {
+        const orderWithNumber = {
+            orderNumber: orderNumber,
+            items: cart,
+        };
+
+        // Spara alla ordrar
+        let orderHistory = JSON.parse(localStorage.getItem("orderHistory")) || [];
+        orderHistory.push(orderWithNumber);
+        localStorage.setItem("orderHistory", JSON.stringify(orderHistory));
+
+        // Sparar senaste ordern
+        saveOrderHistory(orderWithNumber);
+        localStorage.setItem("lastOrder", JSON.stringify(orderWithNumber));
+        localStorage.removeItem("cart");
+    }
 }
-// updatera placeOrder med = (dish) och displayETA(eta, dish)
+
 
 function formatTime(time) {
     let minutes = time % 60;

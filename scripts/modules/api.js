@@ -13,16 +13,23 @@ export async function getProducts() {
 }
 
 export async function getUsers() {
-	try {
-		const userResponse = await fetch ('https://santosnr6.github.io/Data/yumyumusers.json');
-		if (!userResponse.ok) {
-			throw new Error(`HTTP error: ${userResponse.status}`);
-		}
-		const userData = await userResponse.json();
-		console.log(userData);
-		return userData;
-	} catch (error) {
-		console.error("Error fetching users:", error);
-		return null;
-	}
+    try {
+        const userResponse = await fetch('https://santosnr6.github.io/Data/yumyumusers.json');
+        if (!userResponse.ok) {
+            throw new Error(`HTTP error: ${userResponse.status}`);
+        }
+        const userData = await userResponse.json();
+        if (userData && userData.users && Array.isArray(userData.users)) {
+            console.log(userData); // For debugging
+            return userData;
+        } else {
+            throw new Error("Invalid data format received from API");
+        }
+    } catch (error) {
+        console.error("Error fetching users:", error);
+        return null;
+
+        
+    }
+    
 }

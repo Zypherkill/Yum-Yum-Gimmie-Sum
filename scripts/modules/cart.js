@@ -52,7 +52,7 @@ function renderMenu() {
         <article class="menu-item">
             <h2 class="menu-title">${item.name} x ${item.quantity}</h2>
             <p class="menu-ingredients">${Array.isArray(item.ingredients) && item.ingredients.length > 0 ? item.ingredients.join(', ') : "Inga ingredienser"}</p>
-            <p class="menu-price">${item.price * item.quantity} sek</p>
+            <p class="menu-price">${item.price * item.quantity} kr</p>
             <i class="fa-solid fa-circle-plus add-to-cart" data-id="${item.id}"></i>
             <i class="fa-solid fa-circle-minus remove-from-cart" data-id="${item.id}"></i>
         </article>
@@ -79,7 +79,7 @@ function updateCart() {
     cartContainer.innerHTML = cart.map(item => `
         <article class="menu-item">
             <h2 class="menu-title">${item.name} x ${item.quantity}</h2>
-            <p class="menu-price">${item.price * item.quantity} sek</p>
+            <p class="menu-price">${item.price * item.quantity} kr</p>
             <i class="fa-solid fa-circle-plus add-to-cart" data-id="${item.id}"></i>
             <i class="fa-solid fa-circle-minus remove-from-cart" data-id="${item.id}"></i>
         </article>
@@ -88,12 +88,12 @@ function updateCart() {
     const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
 
     cartContainer.innerHTML += `<article class="menu-item total-price-container">
-        <p class="total-price">Total: ${totalPrice} SEK</p>
+        <p class="total-price">Total: ${totalPrice} kr</p>
     </article>
 
-    <article class="orderButtonArticle">
-    <a href="../pages/bestallning.html" class="button button--top orderButton"> <button>TAKE MY MONEY</button></a>
-    </article>`;
+    
+    <a href="../pages/bestallning.html" class="button button--top orderButton"> TAKE MY MONEY</a>
+    `;
 
 }
 

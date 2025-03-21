@@ -9,11 +9,13 @@
 	<title>Yum Yum Gimme Sum - Kundvagn</title>
 </head>
 <body>
-    <div class="content-wrapper cart-wrapper">
-        <h1>Din Varukorg</h1>
+    <section class="content-wrapper cart-wrapper" aria-labelledby="cart-heading">
+        <h1 id="cart-heading">Din Varukorg</h1>
 
         <!-- Varukorgslista -->
-        <div id="cart"></div>
-    </div>
+        <section id="cart" aria-live="polite" aria-relevant="additions removals">
+          
+        </section>
+    </section>
 </body>
 </html>

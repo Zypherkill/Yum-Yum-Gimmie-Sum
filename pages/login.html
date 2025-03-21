@@ -1,32 +1,66 @@
 <!DOCTYPE html>
 <html lang="sv">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="./assets/style.css">
-	<script type="module" src="./scripts/main.js"></script>
-	<title>Yum Yum Gimme Sum - Login</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/style.css">
+    <script type="module" src="../scripts/main.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <title>Yum Yum Gimme Sum - Logga In</title>
 </head>
 <body>
-	<header class="header">
-		<section class="hamburger-menu">
-			<hr class="header__lines"><hr class="header__lines"><hr class="header__lines">
-		</section>
-		<img src="../assets/images/white icon.png" alt="White logo of Yum Yum Gimme Sum" class="logo">
-		<nav class="navigation">
+    <header class="header" role="banner">
+        <section class="hamburger-menu">
+            <hr class="header__lines"><hr class="header__lines"><hr class="header__lines">
+        </section>
+        <a href="../index.html"> <img src="../assets/images/white icon.png" alt="White logo of Yum Yum Gimme Sum" class="logo"> </a>
+        <nav class="navigation user-menu"id="user-menu" aria-label="Navigering för användare">
 			<section class="nav-top">
 				<img src="../assets/images/white icon.png" alt="White logo of Yum Yum Gimme Sum" class="logo">
 				<i class="fa-solid fa-xmark" style="color: #ffffff;"></i>
 			</section>
 			<section class="list-item">
-				<a href="#">LOGGA IN</a>
-				<a href="meny.html">SE MENY</a>
-				<a href="om_oss.html">OM OSS</a>
+				<a href="./login.html" aria-label="Logga in eller registrera dig">LOGGA IN/REGISTRERA DIG</a>
+				<a href="./meny.html" aria-label="Se meny">SE MENY</a>
+				<a href="./om_oss.html" aria-label="Om oss">OM OSS</a>
+				<a href="./location.html" aria-label="Hitta oss">HITTA OSS</a>
 			</section>
 		</nav>
-	</header>
-	<div class="content-wrapper">
 
-		<div>
+		<nav class="navigation login-menu" aria-label="Navigering för inloggade användare">
+			<section class="nav-top">
+				<img src="../assets/images/white icon.png" alt="White logo of Yum Yum Gimme Sum" class="logo">
+				<i class="fa-solid fa-xmark" style="color: #ffffff;"></i>
+			</section>
+			<section class="list-item">
+				<a href="./profil.html" aria-label="Min profil">MIN PROFIL</a>
+				<a href="./orderhistorik.html" aria-label="Historik">HISTORIK</a>
+				<a href="./meny.html" aria-label="Se meny">SE MENY</a>
+				<a href="./om_oss.html" aria-label="Om oss">OM OSS</a>
+				<a href="./location.html" aria-label="Hitta oss">HITTA OSS</a>
+				<a class="log-out" aria-label="Logga ut">LOGGA UT</a>
+			</section>
+		</nav>
+    </header>
+	<section class="content-wrapper login-wrapper">
+        <h1 id="login-title" class="login-title">Logga in</h1>
+        <form class="login-form" aria-labelledby="login-title" method="POST" action="#">
+            <h2 class="form-title">Välkommen till Yum Yum Gimme Sum!</h2>
+
+            <p class="login-text">Logga in nedan för att se din orderhistorik.</p>
+            
+            <label for="email">E-post eller användarnamn:</label>
+            <input type="text" id="email" name="email" required aria-required="true" aria-describedby="email-help">
+            
+
+            <label for="password">Lösenord:</label>
+            <input type="password" id="password" name="password" required aria-required="true" aria-describedby="password-help">
+           
+
+            <p class="account">Inget konto? <a href="register.html" aria-label="Skapa ett nytt konto">Skapa ett här</a></p>
+
+            <button class="login-button" type="submit" aria-label="Logga in">Logga in</button>
+        </form>
+	</section>
 </body>
 </html>

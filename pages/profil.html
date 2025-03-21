@@ -4,17 +4,17 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="../assets/style.css">
-	<script type="module" src="../scripts/main.js"></script>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-	<title>Yum Yum Gimme Sum - Registrera</title>
+	<script type="module" src="../scripts/main.js"></script>
+	<title>Yum Yum Gimme Sum - Profil</title>
 </head>
 <body>
 	<header class="header" role="banner">
 		<section class="hamburger-menu" aria-label="Huvudmeny">
-			<hr class="header__lines" aria-hidden="true">
-			<hr class="header__lines" aria-hidden="true">
-			<hr class="header__lines" aria-hidden="true">
-		</section>
+            <hr class="header__lines" aria-hidden="true">
+            <hr class="header__lines" aria-hidden="true">
+            <hr class="header__lines" aria-hidden="true">
+        </section>
 		<a href="../index.html" aria-label="Gå till startsidan">
 			<img src="../assets/images/white icon.png" alt="White logo of Yum Yum Gimme Sum" class="logo">
 		</a>
@@ -46,27 +46,27 @@
 			</section>
 		</nav>
 	</header>
+	<div class="content-wrapper" role="main">
+		<section class="user-profile">
+			<h1 class="user-title" id="profile-heading">Min Profil</h1>
+			<img class="profile-image" src="" alt="Profilbild" width="100" aria-labelledby="profile-heading">
+			<label for="profile-image-upload" class="custom-file-upload" aria-label="Ladda upp profilbild">Välj profilbild</label>
+			<input type="file" id="profile-image-upload" aria-describedby="profile-image-upload-description">
+			<label for="profile-name">Namn:</label>
+			<input type="text" class="profile-name" id="profile-name" aria-describedby="name-description">
+			<label for="profile-email">Email:</label>
+			<input type="email" class="profile-email" id="profile-email" aria-describedby="email-description">
+			<label for="profile-password">Lösenord:</label>
+			<input type="password" class="profile-password" id="profile-password" aria-describedby="password-description">
+			<button class="update-profile-btn" aria-label="Uppdatera profil">Uppdatera profil</button>
+		</section>
+	</div>
 
-	<div class="content-wrapper login-wrapper" role="main">
-		<h1 class="login-title" id="register-title">REGISTRERA DIG</h1>
-		<form class="login-form register-form" aria-labelledby="register-title">
-			<h2 class="form-title">Välkommen till Yum Yum Gimme Sum!</h2>
-
-			<p class="login-text">Genom att skapa ett konto nedan kan du spara och se din orderhistorik</p>
-
-			<label for="name">Namn:</label>
-			<input type="text" id="name" name="name" autocomplete="name" required aria-required="true" aria-describedby="name-description">
-
-			<label for="email">Email:</label>
-			<input type="text" id="email" name="email" autocomplete="off" required aria-required="true" aria-describedby="email-description">
-
-			<label for="password">Lösenord:</label>
-			<input type="password" id="password" name="password" autocomplete="off" required aria-required="true" aria-describedby="password-description">
-
-			<p class="account">Redan användare? <a href="login.html" aria-label="Logga in här">Logga in här</a></p>
-
-			<button class="login-button" type="submit" aria-label="Registrera konto">Registrera</button>
-		</form>
+	<div id="cart-modal" class="cart-modal hidden" role="dialog" aria-labelledby="cart-modal-heading">
+		<div class="cart-modal-content">
+			<span class="close-modal" role="button" aria-label="Stäng varukorg">&times;</span>
+			<div id="cart" aria-live="polite"></div>
+		</div>
 	</div>
 
 </body>

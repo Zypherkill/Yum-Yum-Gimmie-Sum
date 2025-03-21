@@ -64,36 +64,48 @@ export async function showMenu() {
         items.forEach((item) => {
             const menuItem = document.createElement("article");
             menuItem.classList.add("menu-item");
-
+    
             const itemName = document.createElement("h2");
             itemName.textContent = item.name;
             itemName.classList.add("menu-title");
-
+    
             const itemIngredients = document.createElement("p");
             itemIngredients.textContent = Array.isArray(item.ingredients) && item.ingredients.length > 0
                 ? item.ingredients.join(", ")
                 : "";
             itemIngredients.classList.add("menu-ingredients");
-
+    
             const itemPrice = document.createElement("p");
-            itemPrice.textContent = `${item.price} sek`;
+            itemPrice.textContent = `${item.price} kr`;
             itemPrice.classList.add("menu-price");
-
+    
             const plusButton = document.createElement("i");
             plusButton.classList.add("fa-solid", "fa-circle-plus");
             plusButton.setAttribute("data-id", item.id);
-
+            plusButton.setAttribute("tabindex", "0"); // Make it focusable
+            plusButton.addEventListener("keydown", handleKeydown); // Handle Enter/Space press
+    
             const minusButton = document.createElement("i");
             minusButton.classList.add("fa-solid", "fa-circle-minus");
             minusButton.setAttribute("data-id", item.id);
-
+            minusButton.setAttribute("tabindex", "0"); // Make it focusable
+            minusButton.addEventListener("keydown", handleKeydown); // Handle Enter/Space press
+    
+            // Append plusButton first, then minusButton
             menuItem.appendChild(itemName);
             menuItem.appendChild(itemIngredients);
             menuItem.appendChild(itemPrice);
-            menuItem.appendChild(minusButton);
-            menuItem.appendChild(plusButton);
+            menuItem.appendChild(plusButton); // Plus button comes first in the tab order
+            menuItem.appendChild(minusButton); // Minus button comes after the plus button
             menuRef.appendChild(menuItem);
         });
+    }
+    
+    function handleKeydown(event) {
+        if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault(); // Prevent default behavior for Space (scrolling)
+            event.target.click();  // Trigger click event on the target element
+        }
     }
 
     renderMenu(productData);
@@ -108,7 +120,7 @@ export async function showMenu() {
     console.log("Menu items appended");
 }
 
-globalEventListener.add("click", ".fa-solid.fa-cart-shopping", () => {
+globalEventListener.add("click", ".fa-cart-shopping", () => {
     updateCart(); // Uppdaterar innan vi visar modalen
     document.getElementById("cart-modal").classList.remove("hidden");
 });
@@ -119,49 +131,64 @@ globalEventListener.add("DOMContentLoaded", () => {
     console.log("DOMContentLoaded event fired");
     showMenu();
 });
-// Handle item addition to the cart
+
+//handle item addition to the cart
 globalEventListener.add("click", ".fa-circle-plus", async (event, button) => {
     const itemId = Number(button.getAttribute("data-id"));
-    const availableItems = await getProducts(); 
+    const availableItems = await getProducts();
     const selectedItem = availableItems.find(product => product.id === itemId);
-    
+
     if (!selectedItem) return;
 
+    // Add to cart
     addToCart(selectedItem);
+
+    // Update cart UI
     updateCart();
 
-    // Locate the menu item in the DOM
-    const parentItem = button.closest(".menu-item");
-    const nameElement = parentItem.querySelector(".menu-title");
+    // Find and update the menu item quantity
+    const parentItem = document.querySelector(`.menu-item [data-id="${itemId}"]`)?.closest(".menu-item");
+    if (parentItem) {
+        const nameElement = parentItem.querySelector(".menu-title");
 
-    // Retrieve the latest quantity from storage
-    const currentCart = getCart();
-    const itemInCart = currentCart.find(product => product.id === itemId);
-    const newQuantity = itemInCart ? itemInCart.quantity : 1;
+        // Retrieve updated cart data
+        const currentCart = getCart();
+        const itemInCart = currentCart.find(product => product.id === itemId);
+        const newQuantity = itemInCart ? itemInCart.quantity : 1;
 
-    // Update the display
-    nameElement.textContent = `${selectedItem.name} x ${newQuantity}`;
-});
+        // Update menu display to match the cart
+        nameElement.textContent = `${selectedItem.name
+            } x ${newQuantity}`;
+    }
+}
+);
+
 
 // Handle item removal from the cart
-globalEventListener.add("click", ".fa-circle-minus", (event, button) => {
+globalEventListener.add("click", ".fa-circle-minus", async (event, button) => {
     const itemId = Number(button.getAttribute("data-id"));
-    removeFromCart(itemId);
-    updateCart();
+    const availableItems = await getProducts();
+    const selectedItem = availableItems.find(product => product.id === itemId);
 
-    // Find the related menu entry
-    const parentItem = button.closest(".menu-item");
-    const nameElement = parentItem.querySelector(".menu-title");
+    // Remove item from cart
+    removeFromCart(itemId);
+
+    // Update cart UI
+    updateCart();
 
     // Get the updated cart data
     const updatedCart = getCart();
     const itemInCart = updatedCart.find(product => product.id === itemId);
     const newQuantity = itemInCart ? itemInCart.quantity : 0;
 
-    // Adjust the item label based on quantity
-    nameElement.textContent = newQuantity > 0 
-        ? `${itemInCart.name} x ${newQuantity}` 
-        : itemInCart.name;
+    //Update the menu quantity text
+    const parentItem = document.querySelector(`.menu-item [data-id="${itemId}"]`)?.closest(".menu-item");
+    if (parentItem) {
+        const nameElement = parentItem.querySelector(".menu-title");
+        nameElement.textContent = newQuantity > 0
+            ? `${selectedItem.name} x ${newQuantity}`
+            : selectedItem.name;
+    }
 });
 
 
@@ -180,3 +207,38 @@ document.querySelector(".menu-wrapper")?.addEventListener("click", (event) => {
         updateCart(); // Uppdatera gränssnittet
     }
 });
+
+const cartDropdown = document.getElementById("cart-dropdown");
+
+// Show dropdown on hover over cart icon
+globalEventListener.add("mouseover", ".cart-icon", () => {
+    updateCartDropdown();
+    cartDropdown.classList.add("show");
+});
+
+// Hide dropdown with a slight delay
+globalEventListener.add("mouseout", ".cart-icon", () => {
+    setTimeout(() => {
+        if (!cartDropdown.matches(":hover")) {
+            cartDropdown.classList.remove("show");
+        }
+    }, 200); // Allow time to move to dropdown
+});
+
+// Keep dropdown visible when hovered over
+globalEventListener.add("mouseover", "#cart-dropdown", () => {
+    cartDropdown.classList.add("show");
+});
+
+// Hide dropdown when mouse leaves it
+globalEventListener.add("mouseout", "#cart-dropdown", () => {
+    cartDropdown.classList.remove("show");
+});
+
+// Function to update the dropdown content
+function updateCartDropdown() {
+    const cart = getCart();
+    cartDropdown.innerHTML = cart.length > 0
+        ? cart.map(item => `<p>${item.name} × ${item.quantity}</p>`).join("")
+        : "<p>Din varukorg är tom.</p>";
+}

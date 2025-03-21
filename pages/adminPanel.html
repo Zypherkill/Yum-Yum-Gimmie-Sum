@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script type="module" src="../scripts/main.js"></script>
+    <script type="module" src="../scripts/modules/adminPanel.js"></script>
+    <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+    <header class="header" role="banner">
+		<section class="hamburger-menu" aria-label="Huvudmeny">
+            <hr class="header__lines" aria-hidden="true"><hr class="header__lines" aria-hidden="true"><hr class="header__lines" aria-hidden="true">
+        </section>
+		<a href="../index.html" aria-label="Gå till startsidan"> <img src="../assets/images/white icon.png" alt="White logo of Yum Yum Gimme Sum" class="logo"> </a>
+		<div class="cart-container" role="region" aria-labelledby="cart-text">
+			<i class="fa-solid fa-cart-shopping cart-icon" style="color: #ffffff;" aria-hidden="true">
+				<span id="cart-text" class="cart-text hidden" aria-live="polite">0</span>
+			</i>
+			<span id="cart-dropdown" class="cart-dropdown hidden" role="status" aria-live="polite"></span>
+		</div>
+		<nav class="navigation login-menu" aria-label="Navigering för inloggade användare">
+			<section class="nav-top">
+				<img src="../assets/images/white icon.png" alt="White logo of Yum Yum Gimme Sum" class="logo">
+				<i class="fa-solid fa-xmark" style="color: #ffffff;" role="button" aria-label="Stäng meny"></i>
+			</section>
+			<section class="list-item">
+				<a href="./profil.html" aria-label="Visa min profil">MIN PROFIL</a>
+				<a href="./orderhistorik.html" aria-label="Visa min orderhistorik">HISTORIK</a>
+				<a href="./meny.html" aria-label="Se meny">SE MENY</a>
+				<a href="./om_oss.html" aria-label="Läs om oss">OM OSS</a>
+				<a href="./location.html" aria-label="Hitta oss">HITTA OSS</a>
+				<a class="log-out" href="../index.html" aria-label="Logga ut">LOGGA UT</a>
+				<button id="adminPanelBtn" style="display: none;" aria-label="Gå till Admin Panel">Admin Panel</button>
+			</section>
+		</nav>
+	</header>
+    <div class="content-wrapper admin-wrapper">
+        <h1>Admin Panel</h1>
+        <!-- Admin Navigation Menu -->
+        <div class="admin-menu">
+            <button id="ordersMenuBtn" class="admin-btn active">Orders</button>
+            <button id="usersMenuBtn" class="admin-btn">Users</button>
+        </div>
+        
+        <!-- Admin Controls (Search and Filter) -->
+        <div class="admin-controls">
+            <input type="text" id="search" placeholder="Search by User or Order ID..." />
+            <select id="statusFilter">
+                <option value="">All Status</option>
+                <option value="Pending">Pending</option>
+                <option value="Processing">Processing</option>
+                <option value="Completed">Completed</option>
+            </select> 
+        </div>
+        
+        
+        <!-- Orders Table -->
+        <div id="ordersTableContainer" class="table-container">
+            <h2>Orders</h2>
+            <table id="ordersTable">
+                <thead>
+                    <tr>
+                        <th>Order ID</th>
+                        <th>Item</th>
+                        <th>Quantity</th>
+                        <th>Price Per Item</th>
+                        <th>Order Status</th>
+                        
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+        
+        <!-- Users Table -->
+        <div id="usersTableContainer" class="table-container">
+            <h2>Users</h2>
+            <table id="usersTable">
+                <thead>
+                    <tr>
+                        <th>UserName</th>
+                        <th>Password</th>
+                        <th>Email</th>
+                        <th>Role</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
