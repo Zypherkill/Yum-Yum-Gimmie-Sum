@@ -658,8 +658,8 @@ h1{
 }
 
 .profile-image {
-    width: auto;
-    height: auto;
+    width: 150px;
+    height: 150px;
     border-radius: 50%;
     aspect-ratio: 1;
     object-fit: cover;
