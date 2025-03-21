@@ -1,12 +1,13 @@
-# Mötesprotokoll (dagens datum)
+# Mötesprotokoll (2025-03-14)
 
 ## Närvarande
 
-- Person 1 (ersätt med namn)
-- Person 2
-- Person 3
-  osv...
+- Hannes
+- Robin O
+- Tim
+- Emund
+- Nikki
 
 ## Protokoll
-
-Sammanfatta vad ni presenterat, vilka kommentarer PO hade osv.
+- Denna vecka presenterade vi funktionalitet i meny och att göra beställning och även göra en om oss sida, all styling gjordes också på de sidorna som visades upp.
+- Jakob hade inte mycket att säga, han tyckte att det vi gjorde hade varit bra hittils och önskade oss lycka till för nästa gång.
