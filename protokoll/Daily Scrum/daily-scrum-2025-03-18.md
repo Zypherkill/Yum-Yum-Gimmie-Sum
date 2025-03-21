@@ -18,7 +18,7 @@ Var och en svarar på frågorna nedan, 1 person antecknar
 - Finns det några hinder?
 
 Hannes
-- Fixade först och främst så den kunde gå under 1 på menyn sidan om man tog bort i menyn, styling på inloggningsformuläret och även på location sidan
+- Fixade först och främst minus knappen på meny sidan om man tar bort, styling på inloggningsformuläret och även på location sidan
 - Kolla på att byta profilbild och användarnamn
 - Ingenting större just nu, får be om hjälp om han inte löser det
 
