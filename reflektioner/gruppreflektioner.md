@@ -32,14 +32,12 @@ Att inte jobba i dev och invänta andras kod och förstå vad de har gjort, samt
 Det viktigaste var att kommunicera med varandra för att kunna förstå koden och vara ständigt aktiva i chatten för att veta vad som gjorts.
 
 #### Vilka kompromisser inom teamet har ni gjort under projektets gång?
-Vi har litat på varandra på att få sakerna gjort.
+Vi har litat på varandra på att få sakerna gjort och att vi inte har försökt att gå in och ändra i andras kod.
 
 ### Teamets reflektion och utvärdering
 
 #### Vad lärde sig gruppen inom projektet?
-
-(insert answer here...)
+Vikten av dagliga scrum-möten och sprint-planning möten och att kursen har just lärt oss hur man arbetar agilt.
 
 #### Hur kan gruppen förbättra sitt samarbete framöver?
-
-(insert answer here...)
+Det vi ska bli bättre på att inte pusha upp för mycket och tydligare definera vad som är en färdig produkt som ska pushas upp.
