@@ -30,9 +30,6 @@ En mobilapp för en foodtruck där du kan beställa mat, se menyn, hitta foodtru
 
 ---
 
-
----
-
 ## 🏗️ Så utfördes arbetet
 
 Detta var **vårt första grupprojekt**, och vi arbetade **agilt** genom hela processen:  
